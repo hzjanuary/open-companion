@@ -1,0 +1,177 @@
+name: Quality
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: january
+          POSTGRES_USER: january
+          POSTGRES_PASSWORD: january-local
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U january -d january"
+          --health-interval 2s --health-timeout 3s --health-retries 15
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 2s --health-timeout 3s --health-retries 15
+      qdrant:
+        image: qdrant/qdrant:v1.13.4
+        ports:
+          - 6333:6333
+        options: >-
+          --health-cmd "/qdrant/qdrant --version"
+          --health-interval 2s --health-timeout 3s --health-retries 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.6.5"
+          enable-cache: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: uv sync --all-groups --locked
+      - run: ./scripts/validate.sh
+      - run: ./scripts/validate-self-hosted.sh
+      - run: ./scripts/validate-public-release.sh
+      - run: ./scripts/validate-graphify-integration.sh
+      # The fresh Docker acceptance test is included in the existing integration
+      # selection. Build its local stock image explicitly, never pull a release.
+      - run: docker build --tag january-self-host:spec043-development .
+      - run: ./scripts/validate-ai-evals.sh
+      - run: ./scripts/validate-telegram-conversation-ux.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5448
+      - run: ./scripts/validate-telegram-presence.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5450
+          JANUARY_REDIS_HOST_PORT: 6397
+      - run: ./scripts/validate-telegram-regeneration.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5452
+      - run: ./scripts/validate-telegram-reactions.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5454
+      - run: ./scripts/validate-telegram-voice-tts.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5456
+      - run: ./scripts/validate-conversation-feedback.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5458
+      - run: ./scripts/validate-deployment.sh
+      - run: ./scripts/validate-zalo-feasibility.sh
+      - run: ./scripts/validate-zalo-verification.sh
+      - run: ./scripts/validate-observability.sh
+      - run: ./scripts/validate-reliability.sh
+      - run: ./scripts/validate-scalability.sh
+      - run: ./scripts/validate-ambient.sh
+      - run: ./scripts/validate-summaries.sh
+      - run: ./scripts/validate-semantic-memory.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5433
+          JANUARY_REDIS_HOST_PORT: 6380
+          JANUARY_QDRANT_HOST_PORT: 6334
+      # Exercise reversible schema lifecycles before tests create governed state.
+      # SPEC-026/027 correctly refuse destructive downgrade of that state.
+      - run: |
+          uv run alembic upgrade head
+          uv run alembic downgrade base
+          uv run alembic upgrade head
+          uv run alembic downgrade 0005_outbound_delivery
+          uv run alembic upgrade head
+          uv run alembic downgrade 0007_telegram_commands
+          uv run alembic upgrade head
+        env:
+          JANUARY_ENVIRONMENT: test
+          JANUARY_DATABASE_HOST: 127.0.0.1
+      - run: uv run pytest -m integration
+        env:
+          JANUARY_ENVIRONMENT: test
+          JANUARY_DATABASE_HOST: 127.0.0.1
+      - run: uv run pytest -m ingress_integration
+        env:
+          JANUARY_ENVIRONMENT: test
+          JANUARY_DATABASE_HOST: 127.0.0.1
+          JANUARY_REDIS_URL: redis://127.0.0.1:6379/0
+      - run: uv run pytest -m conversation_integration
+        env:
+          JANUARY_ENVIRONMENT: test
+          JANUARY_DATABASE_HOST: 127.0.0.1
+          JANUARY_REDIS_URL: redis://127.0.0.1:6379/0
+      - run: uv run pytest -m planning_integration
+        env:
+          JANUARY_ENVIRONMENT: test
+          JANUARY_DATABASE_HOST: 127.0.0.1
+          JANUARY_REDIS_URL: redis://127.0.0.1:6379/0
+      - run: uv run pytest -m delivery_integration
+        env:
+          JANUARY_ENVIRONMENT: test
+          JANUARY_DATABASE_HOST: 127.0.0.1
+          JANUARY_REDIS_URL: redis://127.0.0.1:6379/0
+      - run: uv run pytest -m demo_integration
+        env:
+          JANUARY_ENVIRONMENT: test
+          JANUARY_DATABASE_HOST: 127.0.0.1
+          JANUARY_REDIS_URL: redis://127.0.0.1:6379/0
+      - run: uv run pytest backend/tests/test_personality.py && uv run pytest -m 'planning_integration or personality_integration'
+        env:
+          JANUARY_ENVIRONMENT: test
+          JANUARY_DATABASE_HOST: 127.0.0.1
+          JANUARY_REDIS_URL: redis://127.0.0.1:6379/0
+      - run: uv run pytest backend/tests/test_telegram_commands.py && uv run pytest -m command_integration
+        env:
+          JANUARY_ENVIRONMENT: test
+          JANUARY_DATABASE_HOST: 127.0.0.1
+          JANUARY_REDIS_URL: redis://127.0.0.1:6379/0
+      - run: uv run pytest -m memory_integration
+        env:
+          JANUARY_ENVIRONMENT: test
+          JANUARY_DATABASE_HOST: 127.0.0.1
+          JANUARY_REDIS_URL: redis://127.0.0.1:6379/0
+      - run: ./scripts/validate-safety.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5433
+          JANUARY_REDIS_HOST_PORT: 6380
+      - run: ./scripts/validate-provider-governance.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5436
+          JANUARY_REDIS_HOST_PORT: 6383
+      - run: ./scripts/validate-personal-context.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5438
+          JANUARY_REDIS_HOST_PORT: 6385
+      - run: ./scripts/validate-telegram-media.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5440
+          JANUARY_REDIS_HOST_PORT: 6387
+      - run: ./scripts/validate-proactive-scheduling.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5442
+          JANUARY_REDIS_HOST_PORT: 6389
+      - run: ./scripts/validate-multi-tenancy.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5444
+          JANUARY_REDIS_HOST_PORT: 6391
+      - run: ./scripts/validate-knowledge-rag.sh
+        env:
+          JANUARY_DB_HOST_PORT: 5447
+          JANUARY_QDRANT_HOST_PORT: 6337

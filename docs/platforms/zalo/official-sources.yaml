@@ -1,0 +1,133 @@
+sources:
+  - id: ZALO-DEV-001
+    url: https://developers.zalo.me/docs/
+    title: Zalo For Developers
+    publisher: Zalo for Developers
+    accessed_date: 2026-08-01
+    published_or_updated: null
+    login_required: "no"
+    evidence: verified_official
+    capabilities: [official_account_identity, application_identity, group_surface_exists, webhook_registration]
+    paraphrase: The public documentation index separates OA, messaging, GMF, webhook, ZBS, Social API, and Social Plugins.
+    caveats: An index proves product/documentation surface, not endpoint semantics.
+  - id: ZALO-OA-001
+    url: https://developers.zalo.me/docs/official-account/bat-dau/kham-pha
+    title: Khám phá Zalo Official Account
+    publisher: Zalo for Developers
+    accessed_date: 2026-08-01
+    published_or_updated: null
+    login_required: partial
+    evidence: official_ambiguous
+    capabilities: [official_account_identity, application_identity, permission_review, secret_storage_requirements]
+    paraphrase: OA is the documented business identity surface; detailed provisioning and entitlement conditions require operator review.
+    caveats: No OA/app was created or linked during this spike.
+  - id: ZALO-AUTH-001
+    url: https://developers.zalo.me/docs/official-account/bat-dau/xac-thuc-va-uy-quyen-cho-ung-dung-new
+    title: Xác thực và ủy quyền cho ứng dụng
+    publisher: Zalo for Developers
+    accessed_date: 2026-08-01
+    published_or_updated: null
+    login_required: partial
+    evidence: official_but_login_required
+    capabilities: [access_token, refresh_token, token_rotation, permission_review, secret_storage_requirements]
+    paraphrase: The OA documentation has a dedicated application authentication and authorization flow.
+    caveats: Token lifetime, refresh, proof requirements, scopes, and multi-OA behavior need a test OA/app verification.
+  - id: ZALO-MSG-001
+    url: https://developers.zalo.me/docs/official-account/tin-nhan/tong-quan
+    title: Tổng quan tin nhắn Zalo Official Account
+    publisher: Zalo for Developers
+    accessed_date: 2026-08-01
+    published_or_updated: null
+    login_required: partial
+    evidence: official_ambiguous
+    capabilities: [direct_inbound_text, direct_outbound_text, direct_inbound_media, direct_outbound_media, direct_message_id, direct_user_id]
+    paraphrase: OA messaging is a documented surface with multiple message categories and formats.
+    caveats: Public index access did not establish all payload, ordering, reply, or deduplication guarantees.
+  - id: ZALO-MSG-002
+    url: https://developers.zalo.me/docs/official-account/tin-nhan/tin-tu-van/gui-tin-tu-van-dang-van-ban
+    title: Gửi tin Tư vấn dạng văn bản
+    publisher: Zalo for Developers
+    accessed_date: 2026-08-01
+    published_or_updated: null
+    login_required: partial
+    evidence: official_but_login_required
+    capabilities: [direct_outbound_text, direct_reply_to_message, direct_outbound_media, direct_message_id]
+    paraphrase: The OA message documentation exposes a consultation-text send operation and related formats.
+    caveats: Request/response fields require credentialed test-OA verification before an adapter is designed.
+  - id: ZALO-WEBHOOK-001
+    url: https://developers.zalo.me/docs/official-account/webhook/tong-quan
+    title: Tổng quan Webhook Zalo Official Account
+    publisher: Zalo for Developers
+    accessed_date: 2026-08-01
+    published_or_updated: null
+    login_required: partial
+    evidence: official_but_login_required
+    capabilities: [webhook_registration, webhook_authentication_or_signature, webhook_retry_behavior, webhook_event_id, webhook_message_event, webhook_membership_event, webhook_ordering_guarantee]
+    paraphrase: OA has a dedicated webhook documentation surface.
+    caveats: Authentication, retry, event ID, ordering, and membership-event guarantees were not established from public anonymous access.
+  - id: ZALO-WEBHOOK-002
+    url: https://developers.zalo.me/docs/official-account/webhook/tin-nhan/su-kien-nguoi-dung-gui-tin-nhan
+    title: Sự kiện người dùng gửi tin nhắn
+    publisher: Zalo for Developers
+    accessed_date: 2026-08-01
+    published_or_updated: null
+    login_required: partial
+    evidence: official_but_login_required
+    capabilities: [direct_inbound_text, webhook_message_event, direct_user_id, direct_message_id]
+    paraphrase: The official webhook taxonomy explicitly includes a user-message event.
+    caveats: Payload schema and delivery guarantees remain live-verification items.
+  - id: ZALO-GMF-001
+    url: https://developers.zalo.me/docs/official-account/nhom-chat-gmf/general
+    title: Nhóm chat - GMF
+    publisher: Zalo for Developers
+    accessed_date: 2026-08-01
+    published_or_updated: null
+    login_required: partial
+    evidence: official_ambiguous
+    capabilities: [group_surface_exists, oa_can_create_group, oa_can_join_group, oa_can_receive_group_messages, oa_can_send_group_messages, group_private_friend_use_case_fit]
+    paraphrase: GMF is a distinct OA documentation category, separate from OA direct messages and Social APIs.
+    caveats: Anonymous public evidence does not prove that GMF is an ordinary personal friend group or that an OA can join one.
+  - id: ZALO-GMF-002
+    url: https://developers.zalo.me/docs/official-account/nhom-chat-gmf
+    title: Nhóm chat - GMF API documentation
+    publisher: Zalo for Developers
+    accessed_date: 2026-08-01
+    published_or_updated: null
+    login_required: partial
+    evidence: official_but_login_required
+    capabilities: [group_message_id, group_id, group_member_id, group_member_list, group_member_role, group_admin_role_check, group_join_leave_events, group_reply, group_mentions, group_threads_or_topics, group_stickers, group_media, group_quota, group_size_limit]
+    paraphrase: GMF is documented under OA, but its detailed operations are not anonymously verifiable in this spike.
+    caveats: Treat every listed GMF semantic as unknown until a dedicated test OA/app verification.
+  - id: ZALO-POLICY-001
+    url: https://oa.zalo.me/home/resources/news/thong-bao-chinh-sach-gui-tin-va-quy-dinh-phi-gui-tin_1433049880779375099
+    title: Chính sách gửi các loại tin từ Zalo Official Account
+    publisher: Zalo Official Account
+    accessed_date: 2026-08-01
+    published_or_updated: 2024-01-15
+    login_required: "no"
+    evidence: verified_official_policy
+    capabilities: [user_follow_requirement, user_interaction_or_consent_requirement, response_window, proactive_message_rules, message_type_classification, monthly_or_package_entitlements, per_user_limits, per_oa_limits, commercial_package_requirement]
+    paraphrase: OA messages are classified; user interaction or consent is required for consultation messages, with a documented recent-interaction window and package/entitlement constraints.
+    caveats: Policy changed over time; use the current policy at implementation approval.
+  - id: ZALO-POLICY-002
+    url: https://oa.zalo.me/home/resources/news/chinh-thuc-quyen-loi-va-bieu-phi-cac-goi-dich-vu-zalo-oa-moi-tu-162026-_5100578039811031184
+    title: Quyền lợi và biểu phí các gói dịch vụ Zalo OA mới từ 1/6/2026
+    publisher: Zalo Official Account
+    accessed_date: 2026-08-01
+    published_or_updated: 2026-06-01
+    login_required: "no"
+    evidence: verified_official_policy
+    capabilities: [monthly_or_package_entitlements, commercial_package_requirement, oa_verification_requirement, group_quota]
+    paraphrase: OA packages changed on 2026-06-01 and entitlement must be checked against the selected package.
+    caveats: This source does not itself prove a GMF API capability.
+  - id: ZALO-CHANGELOG-001
+    url: https://oa.zalo.me/home/resources/news
+    title: Tin tức Zalo Official Account
+    publisher: Zalo Official Account
+    accessed_date: 2026-08-01
+    published_or_updated: 2026-06-01
+    login_required: "no"
+    evidence: verified_official_policy
+    capabilities: [monthly_or_package_entitlements, commercial_package_requirement]
+    paraphrase: The official news index lists current OA package and policy announcements, including the June 2026 change.
+    caveats: It is a release/news index, not an API semantic specification.

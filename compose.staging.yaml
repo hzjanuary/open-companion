@@ -1,0 +1,293 @@
+services:
+  database:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${JANUARY_DATABASE_NAME:?JANUARY_DATABASE_NAME is required}
+      POSTGRES_USER: ${JANUARY_DATABASE_USER:?JANUARY_DATABASE_USER is required}
+      POSTGRES_PASSWORD: ${JANUARY_DATABASE_PASSWORD:?JANUARY_DATABASE_PASSWORD is required}
+    ports:
+      - "127.0.0.1:${JANUARY_STAGING_DB_PORT:-5435}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    volumes:
+      - january-spec020-postgres:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "127.0.0.1:${JANUARY_STAGING_REDIS_PORT:-6382}:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    restart: unless-stopped
+
+  qdrant:
+    image: qdrant/qdrant:v1.13.4
+    ports:
+      - "127.0.0.1:${JANUARY_STAGING_QDRANT_PORT:-6335}:6333"
+    healthcheck:
+      test: ["CMD", "/qdrant/qdrant", "--version"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    volumes:
+      - january-spec020-qdrant:/qdrant/storage
+    restart: unless-stopped
+
+  migration:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    command: ["alembic", "upgrade", "head"]
+    environment:
+      JANUARY_ENVIRONMENT: staging
+      JANUARY_DATABASE_HOST: database
+      JANUARY_DATABASE_PORT: "5432"
+      JANUARY_DATABASE_NAME: ${JANUARY_DATABASE_NAME:?JANUARY_DATABASE_NAME is required}
+      JANUARY_DATABASE_USER: ${JANUARY_DATABASE_USER:?JANUARY_DATABASE_USER is required}
+      JANUARY_DATABASE_PASSWORD: ${JANUARY_DATABASE_PASSWORD:?JANUARY_DATABASE_PASSWORD is required}
+      JANUARY_REDIS_URL: redis://redis:6379/0
+    depends_on:
+      database:
+        condition: service_healthy
+    restart: "no"
+
+  backend:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    ports:
+      - "127.0.0.1:${JANUARY_STAGING_HTTP_PORT:-8010}:8000"
+    environment: &january-staging-app-env
+      JANUARY_ENVIRONMENT: staging
+      JANUARY_LOG_LEVEL: INFO
+      JANUARY_DATABASE_HOST: database
+      JANUARY_DATABASE_PORT: "5432"
+      JANUARY_DATABASE_NAME: ${JANUARY_DATABASE_NAME:?JANUARY_DATABASE_NAME is required}
+      JANUARY_DATABASE_USER: ${JANUARY_DATABASE_USER:?JANUARY_DATABASE_USER is required}
+      JANUARY_DATABASE_PASSWORD: ${JANUARY_DATABASE_PASSWORD:?JANUARY_DATABASE_PASSWORD is required}
+      JANUARY_REDIS_URL: redis://redis:6379/0
+      JANUARY_QDRANT_URL: http://qdrant:6333
+      JANUARY_SEMANTIC_MEMORY_ENABLED: ${JANUARY_SEMANTIC_MEMORY_ENABLED:-false}
+      JANUARY_SEMANTIC_MEMORY_WORKER_ENABLED: ${JANUARY_SEMANTIC_MEMORY_WORKER_ENABLED:-false}
+      JANUARY_KNOWLEDGE_RAG_ENABLED: ${JANUARY_KNOWLEDGE_RAG_ENABLED:-false}
+      JANUARY_KNOWLEDGE_INDEX_WORKER_ENABLED: ${JANUARY_KNOWLEDGE_INDEX_WORKER_ENABLED:-false}
+      JANUARY_KNOWLEDGE_QDRANT_COLLECTION_PREFIX: ${JANUARY_KNOWLEDGE_QDRANT_COLLECTION_PREFIX:-january_knowledge}
+      JANUARY_EMBEDDING_PROVIDER: ${JANUARY_EMBEDDING_PROVIDER:-}
+      JANUARY_EMBEDDING_MODEL: ${JANUARY_EMBEDDING_MODEL:-}
+      JANUARY_EMBEDDING_DIMENSION: ${JANUARY_EMBEDDING_DIMENSION:-768}
+      JANUARY_CONVERSATION_SUMMARIES_ENABLED: ${JANUARY_CONVERSATION_SUMMARIES_ENABLED:-false}
+      JANUARY_SUMMARY_WORKER_ENABLED: ${JANUARY_SUMMARY_WORKER_ENABLED:-false}
+      JANUARY_LLM_OLLAMA_BASE_URL: ${JANUARY_LLM_OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      JANUARY_RATE_LIMIT_ENABLED: "true"
+      JANUARY_SAFETY_MODERATION_ENABLED: "true"
+      JANUARY_TELEGRAM_ENABLED: "true"
+      JANUARY_TELEGRAM_MEDIA_ENABLED: ${JANUARY_TELEGRAM_MEDIA_ENABLED:-false}
+      JANUARY_TELEGRAM_MEDIA_PHOTO_MAX_BYTES: ${JANUARY_TELEGRAM_MEDIA_PHOTO_MAX_BYTES:-5242880}
+      JANUARY_TELEGRAM_MEDIA_AUDIO_MAX_BYTES: ${JANUARY_TELEGRAM_MEDIA_AUDIO_MAX_BYTES:-5242880}
+      JANUARY_TELEGRAM_MEDIA_PHOTO_MAX_SIDE: ${JANUARY_TELEGRAM_MEDIA_PHOTO_MAX_SIDE:-1280}
+      JANUARY_TELEGRAM_MEDIA_AUDIO_MAX_DURATION_SECONDS: ${JANUARY_TELEGRAM_MEDIA_AUDIO_MAX_DURATION_SECONDS:-120}
+      JANUARY_TELEGRAM_MEDIA_TRANSCRIPT_MAX_CHARACTERS: ${JANUARY_TELEGRAM_MEDIA_TRANSCRIPT_MAX_CHARACTERS:-4000}
+      JANUARY_TELEGRAM_MEDIA_DOWNLOAD_TIMEOUT_SECONDS: ${JANUARY_TELEGRAM_MEDIA_DOWNLOAD_TIMEOUT_SECONDS:-15}
+      JANUARY_TELEGRAM_MEDIA_TRANSCRIPTION_TIMEOUT_SECONDS: ${JANUARY_TELEGRAM_MEDIA_TRANSCRIPTION_TIMEOUT_SECONDS:-20}
+      JANUARY_TELEGRAM_VOICE_TTS_ENABLED: ${JANUARY_TELEGRAM_VOICE_TTS_ENABLED:-false}
+      JANUARY_TELEGRAM_VOICE_TTS_MODEL: ${JANUARY_TELEGRAM_VOICE_TTS_MODEL:-gpt-4o-mini-tts}
+      JANUARY_TELEGRAM_VOICE_TTS_VOICE: ${JANUARY_TELEGRAM_VOICE_TTS_VOICE:-alloy}
+      JANUARY_TELEGRAM_VOICE_TTS_SOURCE_MAX_CHARACTERS: ${JANUARY_TELEGRAM_VOICE_TTS_SOURCE_MAX_CHARACTERS:-4000}
+      JANUARY_TELEGRAM_VOICE_TTS_OUTPUT_MAX_BYTES: ${JANUARY_TELEGRAM_VOICE_TTS_OUTPUT_MAX_BYTES:-5242880}
+      JANUARY_TELEGRAM_VOICE_TTS_TIMEOUT_SECONDS: ${JANUARY_TELEGRAM_VOICE_TTS_TIMEOUT_SECONDS:-30}
+      JANUARY_TELEGRAM_VOICE_ARTIFACT_GRACE_HOURS: ${JANUARY_TELEGRAM_VOICE_ARTIFACT_GRACE_HOURS:-24}
+      JANUARY_TELEGRAM_VOICE_ARTIFACT_HARD_RETENTION_DAYS: ${JANUARY_TELEGRAM_VOICE_ARTIFACT_HARD_RETENTION_DAYS:-7}
+      JANUARY_PROVIDER_CONCURRENCY_ENABLED: ${JANUARY_PROVIDER_CONCURRENCY_ENABLED:-false}
+      JANUARY_PROVIDER_CONCURRENCY_LEASE_SECONDS: ${JANUARY_PROVIDER_CONCURRENCY_LEASE_SECONDS:-60}
+      JANUARY_PROVIDER_RESERVATION_LEASE_SECONDS: ${JANUARY_PROVIDER_RESERVATION_LEASE_SECONDS:-60}
+      JANUARY_PLANNING_JOB_LEASE_SECONDS: ${JANUARY_PLANNING_JOB_LEASE_SECONDS:-60}
+      JANUARY_LLM_GROQ_API_KEY: ${JANUARY_LLM_GROQ_API_KEY:-}
+      JANUARY_TELEGRAM_BOT_TOKEN: ${JANUARY_TELEGRAM_BOT_TOKEN:?JANUARY_TELEGRAM_BOT_TOKEN is required}
+      JANUARY_TELEGRAM_DELIVERY_MODE: webhook
+      JANUARY_TELEGRAM_PLATFORM_CONNECTION_ID: ${JANUARY_TELEGRAM_PLATFORM_CONNECTION_ID:?JANUARY_TELEGRAM_PLATFORM_CONNECTION_ID is required}
+      JANUARY_TELEGRAM_WEBHOOK_SECRET_TOKEN: ${JANUARY_TELEGRAM_WEBHOOK_SECRET_TOKEN:?JANUARY_TELEGRAM_WEBHOOK_SECRET_TOKEN is required}
+      JANUARY_TELEGRAM_WEBHOOK_PUBLIC_BASE_URL: ${JANUARY_TELEGRAM_WEBHOOK_PUBLIC_BASE_URL:?JANUARY_TELEGRAM_WEBHOOK_PUBLIC_BASE_URL is required}
+      JANUARY_LLM_ENABLED: "true"
+      JANUARY_LLM_PRIMARY_PROVIDER: openai
+      JANUARY_LLM_OPENAI_MODEL: ${JANUARY_LLM_OPENAI_MODEL:?JANUARY_LLM_OPENAI_MODEL is required}
+      JANUARY_LLM_OPENAI_API_KEY: ${JANUARY_LLM_OPENAI_API_KEY:?JANUARY_LLM_OPENAI_API_KEY is required}
+      JANUARY_COMMAND_WORKER_ENABLED: "true"
+      JANUARY_OUTBOUND_DELIVERY_ENABLED: "true"
+      JANUARY_PROACTIVE_SCHEDULING_ENABLED: "true"
+      JANUARY_SCHEDULER_WORKER_ENABLED: "true"
+      JANUARY_SCHEDULER_OWNER_NAME: staging-scheduler
+      JANUARY_RETENTION_WORKER_ENABLED: "true"
+      JANUARY_DATA_GOVERNANCE_ENABLED: "true"
+      JANUARY_GOVERNANCE_WORKER_ENABLED: "true"
+      JANUARY_GOVERNANCE_OWNER_NAME: staging-governance
+      JANUARY_PROVIDER_GOVERNANCE_MODE: ${JANUARY_PROVIDER_GOVERNANCE_MODE:?JANUARY_PROVIDER_GOVERNANCE_MODE is required}
+      JANUARY_PROVIDER_GOVERNANCE_WORKER_ENABLED: "true"
+      JANUARY_PROVIDER_GOVERNANCE_OWNER_NAME: staging-provider-governance
+      JANUARY_CONTROL_PLANE_ENABLED: "true"
+      JANUARY_CONTROL_PLANE_JWT_SECRET: ${JANUARY_CONTROL_PLANE_JWT_SECRET:?JANUARY_CONTROL_PLANE_JWT_SECRET is required}
+      JANUARY_CONTROL_PLANE_JWT_ISSUER: ${JANUARY_CONTROL_PLANE_JWT_ISSUER:?JANUARY_CONTROL_PLANE_JWT_ISSUER is required}
+      JANUARY_CONTROL_PLANE_JWT_AUDIENCE: ${JANUARY_CONTROL_PLANE_JWT_AUDIENCE:?JANUARY_CONTROL_PLANE_JWT_AUDIENCE is required}
+      JANUARY_CONTROL_PLANE_DEPLOYMENT_BOOTSTRAP_SUBJECTS: "${JANUARY_CONTROL_PLANE_DEPLOYMENT_BOOTSTRAP_SUBJECTS:?JANUARY_CONTROL_PLANE_DEPLOYMENT_BOOTSTRAP_SUBJECTS is required}"
+      JANUARY_METRICS_ENABLED: "true"
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    stop_grace_period: 30s
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  dispatcher:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    command: ["python", "-m", "app.runtime.ingress_outbox_dispatcher"]
+    environment: *january-staging-app-env
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    stop_grace_period: 30s
+    restart: unless-stopped
+
+  conversation:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    command: ["python", "-m", "app.runtime.conversation_worker"]
+    environment: *january-staging-app-env
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    stop_grace_period: 30s
+    restart: unless-stopped
+
+  planning:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    command: ["python", "-m", "app.runtime.response_planning_worker"]
+    environment: *january-staging-app-env
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    stop_grace_period: 30s
+    restart: unless-stopped
+
+  commands:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    command: ["python", "-m", "app.runtime.telegram_command_worker"]
+    environment: *january-staging-app-env
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    stop_grace_period: 30s
+    restart: unless-stopped
+
+  outbound:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    command: ["python", "-m", "app.runtime.outbound_delivery_worker"]
+    environment: *january-staging-app-env
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    stop_grace_period: 30s
+    restart: unless-stopped
+
+  scheduler:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    command: ["python", "-m", "app.runtime.proactive_scheduler_worker"]
+    environment: *january-staging-app-env
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+    stop_grace_period: 30s
+    restart: unless-stopped
+
+  governance:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    command: ["python", "-m", "app.runtime.governance_worker"]
+    environment: *january-staging-app-env
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+    stop_grace_period: 30s
+    restart: unless-stopped
+
+  retention:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    command: ["python", "-m", "app.runtime.retention_worker"]
+    environment: *january-staging-app-env
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+    stop_grace_period: 30s
+    restart: unless-stopped
+
+  provider-governance:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    command: ["python", "-m", "app.runtime.provider_governance_worker"]
+    environment: *january-staging-app-env
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+    stop_grace_period: 30s
+    restart: unless-stopped
+
+  summary:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    command: ["python", "-m", "app.runtime.conversation_summary_worker"]
+    environment: *january-staging-app-env
+    profiles: ["summaries"]
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    stop_grace_period: 30s
+    restart: unless-stopped
+
+  semantic-memory:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    command: ["python", "-m", "app.runtime.semantic_memory_index_worker"]
+    environment: *january-staging-app-env
+    profiles: ["semantic-memory"]
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+      qdrant:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    stop_grace_period: 30s
+    restart: unless-stopped
+
+  knowledge-index:
+    image: ${JANUARY_BACKEND_IMAGE:?JANUARY_BACKEND_IMAGE is required}
+    command: ["python", "-m", "app.runtime.knowledge_index_worker"]
+    environment: *january-staging-app-env
+    profiles: ["knowledge-rag"]
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+      qdrant:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    stop_grace_period: 30s
+    restart: unless-stopped
+
+volumes:
+  january-spec020-postgres:
+  january-spec020-qdrant:

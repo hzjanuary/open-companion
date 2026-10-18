@@ -1,0 +1,100 @@
+platform: zalo
+researched_at: 2026-08-01
+baseline_commit: private-source-checkpoint-omitted
+decision: BLOCKED_PENDING_OFFICIAL_VERIFICATION
+operator_verification_gate:
+  spec: SPEC-014
+  status: BLOCKED
+  operator_live_verification: false
+  notes: "Phase 1 preparation completed without credentialed or external activity; no capability evidence was promoted."
+target_surface: "Potential Zalo OA direct assistant and OA-managed GMF only; excludes ordinary personal/friend groups."
+blockers:
+  - id: GMF_SEMANTICS_UNVERIFIED
+    severity: blocking
+    notes: Public official evidence does not establish GMF membership, group messaging, member-role, or parity semantics.
+  - id: OA_AUTH_AND_WEBHOOK_DETAILS_UNVERIFIED
+    severity: blocking
+    notes: Token lifecycle and webhook delivery semantics require a dedicated test OA/app.
+open_questions:
+  - id: OQ-001
+    question: Can an OA join an existing ordinary private Zalo friend group through supported public APIs?
+    evidence: not_documented
+  - id: OQ-002
+    question: Can GMF provide inbound/outbound group text with stable IDs and admin/member operations?
+    evidence: requires_live_verification
+  - id: OQ-003
+    question: Which OA package, review, and verification state enables the required APIs?
+    evidence: requires_live_verification
+capabilities:
+  official_account_identity: {evidence: verified_official, product_fit: supported, confidence: high, source_ids: [ZALO-DEV-001, ZALO-OA-001], notes: OA is a distinct official business identity, adapter_implication: future platform connection could represent an OA after approval}
+  application_identity: {evidence: verified_official, product_fit: supported, confidence: high, source_ids: [ZALO-DEV-001], notes: official application documentation exists, adapter_implication: future adapter needs a separate application identity}
+  access_token: {evidence: official_but_login_required, product_fit: unknown, confidence: medium, source_ids: [ZALO-AUTH-001], notes: auth documentation is present but flow details were not anonymously verified, adapter_implication: add secret setting only after operator verification}
+  refresh_token: {evidence: official_but_login_required, product_fit: unknown, confidence: medium, source_ids: [ZALO-AUTH-001], notes: refresh behavior must be verified on a test app, adapter_implication: token persistence and rotation design remain deferred}
+  token_rotation: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-AUTH-001], notes: rotation lifetime and failure behavior not public evidence, adapter_implication: require a rotation/revocation test}
+  permission_review: {evidence: official_ambiguous, product_fit: supported_with_limits, confidence: medium, source_ids: [ZALO-OA-001, ZALO-AUTH-001], notes: OA/app approval is an operator concern, adapter_implication: bootstrap must include approval preflight}
+  secret_storage_requirements: {evidence: official_but_login_required, product_fit: unknown, confidence: low, source_ids: [ZALO-AUTH-001], notes: secret mechanics unverified, adapter_implication: use existing SecretStr conventions only after docs confirmation}
+  test_or_sandbox_environment: {evidence: not_documented, product_fit: unknown, confidence: low, source_ids: [], notes: no public sandbox guarantee found, adapter_implication: use a dedicated nonproduction OA/app if approved}
+  direct_inbound_text: {evidence: official_but_login_required, product_fit: supported_with_limits, confidence: medium, source_ids: [ZALO-MSG-001, ZALO-WEBHOOK-002], notes: OA messages and user-message webhook are documented, adapter_implication: normalize only after payload verification}
+  direct_outbound_text: {evidence: official_but_login_required, product_fit: supported_with_limits, confidence: medium, source_ids: [ZALO-MSG-001, ZALO-MSG-002, ZALO-POLICY-001], notes: consultation text is documented but constrained by interaction policy, adapter_implication: enforce policy eligibility before outbound action}
+  direct_inbound_media: {evidence: official_ambiguous, product_fit: unknown, confidence: low, source_ids: [ZALO-MSG-001], notes: formats are listed but inbound schema was not verified, adapter_implication: defer media normalization}
+  direct_outbound_media: {evidence: official_but_login_required, product_fit: supported_with_limits, confidence: medium, source_ids: [ZALO-MSG-001, ZALO-MSG-002], notes: documented message formats include media, adapter_implication: adapter capability declarations required}
+  direct_reply_to_message: {evidence: official_but_login_required, product_fit: unknown, confidence: low, source_ids: [ZALO-MSG-002], notes: reply semantics need request-schema verification, adapter_implication: do not promise reply parity}
+  direct_message_id: {evidence: official_but_login_required, product_fit: unknown, confidence: low, source_ids: [ZALO-MSG-001, ZALO-WEBHOOK-002], notes: exact stable ID field not verified, adapter_implication: derive idempotency only after live payload inspection}
+  direct_user_id: {evidence: verified_official_policy, product_fit: supported_with_limits, confidence: high, source_ids: [ZALO-POLICY-001, ZALO-WEBHOOK-002], notes: OA policy defines UID relative to a specific OA, adapter_implication: scope identity by OA connection}
+  direct_conversation_id: {evidence: not_documented, product_fit: unknown, confidence: low, source_ids: [], notes: no public stable direct-conversation identifier verified, adapter_implication: candidate conversation key needs live verification}
+  direct_message_ordering: {evidence: not_documented, product_fit: unknown, confidence: low, source_ids: [], notes: ordering guarantee not found, adapter_implication: retain January ordering guards}
+  direct_duplicate_event_detection: {evidence: not_documented, product_fit: unknown, confidence: low, source_ids: [], notes: webhook dedupe guarantee not found, adapter_implication: use derived at-least-once idempotency only after payload review}
+  direct_edit_event: {evidence: not_documented, product_fit: unknown, confidence: low, source_ids: [], notes: edit event not established, adapter_implication: unsupported until verified}
+  direct_delete_or_recall_event: {evidence: not_documented, product_fit: unknown, confidence: low, source_ids: [], notes: recall event not established, adapter_implication: do not build retention hooks on an assumption}
+  webhook_registration: {evidence: verified_official, product_fit: supported, confidence: high, source_ids: [ZALO-DEV-001, ZALO-WEBHOOK-001], notes: dedicated OA webhook documentation exists, adapter_implication: future interface adapter can use durable inbox}
+  webhook_authentication_or_signature: {evidence: official_but_login_required, product_fit: unknown, confidence: low, source_ids: [ZALO-WEBHOOK-001], notes: signature verification details unavailable anonymously, adapter_implication: no endpoint until verified}
+  webhook_retry_behavior: {evidence: not_documented, product_fit: unknown, confidence: low, source_ids: [], notes: retry semantics not proven, adapter_implication: assume at-least-once only after test evidence}
+  webhook_event_id: {evidence: official_but_login_required, product_fit: unknown, confidence: low, source_ids: [ZALO-WEBHOOK-002], notes: exact event key not publicly verified, adapter_implication: inspect test payload before schema design}
+  webhook_message_event: {evidence: official_but_login_required, product_fit: supported_with_limits, confidence: medium, source_ids: [ZALO-WEBHOOK-002], notes: official taxonomy names a user-message event, adapter_implication: candidate inbound route is webhook only}
+  webhook_membership_event: {evidence: official_ambiguous, product_fit: unknown, confidence: low, source_ids: [ZALO-WEBHOOK-001], notes: public taxonomy does not establish GMF membership events, adapter_implication: membership remains unimplemented}
+  webhook_ordering_guarantee: {evidence: not_documented, product_fit: unknown, confidence: low, source_ids: [], notes: no ordering guarantee found, adapter_implication: retain durable sequencing and dedupe}
+  group_surface_exists: {evidence: verified_official, product_fit: supported_with_limits, confidence: high, source_ids: [ZALO-DEV-001, ZALO-GMF-001], notes: GMF is a separate OA surface, adapter_implication: model it separately from ordinary groups}
+  oa_can_create_group: {evidence: official_ambiguous, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-001, ZALO-GMF-002], notes: creation semantics require test-OA verification, adapter_implication: no bootstrap claim}
+  oa_can_join_group: {evidence: not_documented, product_fit: not_equivalent, confidence: medium, source_ids: [], notes: no official evidence that OA can join an existing ordinary friend group, adapter_implication: ordinary-group adapter is deferred}
+  oa_can_receive_group_messages: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-001, ZALO-GMF-002], notes: GMF inbound behavior unverified, adapter_implication: gate on payload test}
+  oa_can_send_group_messages: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-001, ZALO-GMF-002], notes: GMF outbound behavior unverified, adapter_implication: gate on send test}
+  group_message_id: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: GMF message identifier unknown, adapter_implication: no idempotency design yet}
+  group_id: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: GMF group identifier unknown, adapter_implication: no migration candidate selected}
+  group_member_id: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: GMF member identity unknown, adapter_implication: privacy subject mapping deferred}
+  group_member_list: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: member-list API unknown, adapter_implication: no membership synchronization}
+  group_member_role: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: role fields unknown, adapter_implication: admin commands cannot be authorized}
+  group_admin_role_check: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: live role lookup unknown, adapter_implication: no command adapter}
+  group_join_leave_events: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: group lifecycle event evidence unavailable, adapter_implication: membership state unsupported}
+  group_reply: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: reply field unverified, adapter_implication: preserve reply as optional capability}
+  group_mentions: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: mention entity semantics unknown, adapter_implication: existing UUID mention renderer is Telegram-specific}
+  group_threads_or_topics: {evidence: not_documented, product_fit: unknown, confidence: low, source_ids: [], notes: GMF topic/thread parity not documented, adapter_implication: no topic mapping}
+  group_stickers: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: GMF sticker semantics unknown, adapter_implication: no asset resolver reuse assumption}
+  group_media: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: GMF media semantics unknown, adapter_implication: defer media support}
+  group_quota: {evidence: verified_official_policy, product_fit: supported_with_limits, confidence: medium, source_ids: [ZALO-POLICY-002], notes: entitlement varies by OA package, adapter_implication: operational config needs documented limits}
+  group_size_limit: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: no public size limit verified, adapter_implication: capacity assumptions deferred}
+  group_private_friend_use_case_fit: {evidence: not_documented, product_fit: not_equivalent, confidence: medium, source_ids: [ZALO-GMF-001], notes: GMF is OA-specific and not verified as an existing ordinary friend group, adapter_implication: do not market Telegram-group parity}
+  user_follow_requirement: {evidence: verified_official_policy, product_fit: supported_with_limits, confidence: high, source_ids: [ZALO-POLICY-001], notes: policy differentiates follower and interaction states, adapter_implication: store consent/interaction eligibility}
+  user_interaction_or_consent_requirement: {evidence: verified_official_policy, product_fit: supported_with_limits, confidence: high, source_ids: [ZALO-POLICY-001], notes: consultation send requires interaction or permission, adapter_implication: provider output cannot bypass platform eligibility}
+  response_window: {evidence: verified_official_policy, product_fit: supported_with_limits, confidence: high, source_ids: [ZALO-POLICY-001], notes: recent user interaction affects consultation-message entitlement, adapter_implication: track policy window separately from January limiter}
+  proactive_message_rules: {evidence: verified_official_policy, product_fit: supported_with_limits, confidence: high, source_ids: [ZALO-POLICY-001], notes: message category and recipient policy constrain proactive behavior, adapter_implication: default to no proactive send}
+  message_type_classification: {evidence: verified_official_policy, product_fit: supported_with_limits, confidence: high, source_ids: [ZALO-POLICY-001], notes: OA messages have policy classifications, adapter_implication: outbound action needs platform classification}
+  monthly_or_package_entitlements: {evidence: verified_official_policy, product_fit: supported_with_limits, confidence: high, source_ids: [ZALO-POLICY-001, ZALO-POLICY-002], notes: quotas depend on policy and package, adapter_implication: operator-owned configuration and monitoring needed}
+  per_user_limits: {evidence: verified_official_policy, product_fit: supported_with_limits, confidence: high, source_ids: [ZALO-POLICY-001], notes: policy gives user-level consultation/message limits, adapter_implication: map to participant scope after verification}
+  per_oa_limits: {evidence: verified_official_policy, product_fit: supported_with_limits, confidence: medium, source_ids: [ZALO-POLICY-001, ZALO-POLICY-002], notes: OA entitlement is package-sensitive, adapter_implication: keep external quota separate from internal Redis limiter}
+  commercial_package_requirement: {evidence: verified_official_policy, product_fit: supported_with_limits, confidence: high, source_ids: [ZALO-POLICY-001, ZALO-POLICY-002], notes: OA packages materially affect messaging entitlement, adapter_implication: credentialed rollout needs commercial review}
+  oa_verification_requirement: {evidence: verified_official_policy, product_fit: supported_with_limits, confidence: medium, source_ids: [ZALO-POLICY-002], notes: policy distinguishes OA status/package situations, adapter_implication: add verification preflight after approval}
+  january_mention_only_mode: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: group mention metadata is unverified, adapter_implication: cannot claim mode parity}
+  january_mention_and_name_mode: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: name/mention semantics unverified, adapter_implication: no eligibility mapping}
+  january_ambient_selective_mode: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: ordinary GMF inbound coverage unknown, adapter_implication: defer ambient behavior}
+  january_admin_commands: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: admin role lookup is unverified, adapter_implication: command authorization unavailable}
+  january_user_preferences: {evidence: official_but_login_required, product_fit: supported_with_limits, confidence: medium, source_ids: [ZALO-WEBHOOK-002, ZALO-POLICY-001], notes: OA-scoped UID could support direct preferences, adapter_implication: scope privacy by OA and UID}
+  january_explicit_memory: {evidence: official_but_login_required, product_fit: supported_with_limits, confidence: medium, source_ids: [ZALO-WEBHOOK-002], notes: direct sender identity needs live payload validation, adapter_implication: do not share memory across surfaces}
+  january_forget_me: {evidence: official_but_login_required, product_fit: supported_with_limits, confidence: medium, source_ids: [ZALO-WEBHOOK-002], notes: OA-scoped identity is plausible but schema unverified, adapter_implication: preserve local deletion independent of API deletion}
+  january_personality: {evidence: official_ambiguous, product_fit: supported_with_limits, confidence: medium, source_ids: [ZALO-MSG-001], notes: personality is platform-neutral once messaging exists, adapter_implication: reuse application policy after adapter}
+  january_text_response: {evidence: official_but_login_required, product_fit: supported_with_limits, confidence: medium, source_ids: [ZALO-MSG-002, ZALO-POLICY-001], notes: direct text is documented with policy constraints, adapter_implication: future OA-only slice is plausible}
+  january_reply: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-MSG-002], notes: reply correlation unverified, adapter_implication: make optional}
+  january_mentions: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: GMF mention semantics unknown, adapter_implication: Telegram renderer cannot be reused}
+  january_stickers: {evidence: requires_live_verification, product_fit: unknown, confidence: low, source_ids: [ZALO-GMF-002], notes: group sticker asset semantics unknown, adapter_implication: no sticker mapping}
+  january_safety_policy: {evidence: verified_official_policy, product_fit: supported, confidence: high, source_ids: [ZALO-POLICY-001], notes: January safety remains platform-neutral, adapter_implication: reuse unchanged at planning/delivery boundaries}
+  january_rate_limiting: {evidence: verified_official_policy, product_fit: supported_with_limits, confidence: high, source_ids: [ZALO-POLICY-001, ZALO-POLICY-002], notes: internal limiter remains reusable but external quotas differ, adapter_implication: add provider-specific policy budgets after verification}
+  january_private_group_social_companion: {evidence: not_documented, product_fit: not_equivalent, confidence: medium, source_ids: [ZALO-GMF-001], notes: ordinary private friend-group participation is not established, adapter_implication: defer the target product surface}

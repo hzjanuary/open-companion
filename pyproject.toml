@@ -1,0 +1,67 @@
+[project]
+name = "january"
+version = "0.1.0"
+description = "January social AI companion backend foundation"
+license = { file = "LICENSE" }
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "alembic>=1.14,<2.0",
+  "asyncpg>=0.30,<1.0",
+  "fastapi>=0.115,<0.116",
+  "httpx>=0.28,<0.29",
+  "PyJWT>=2.10,<3.0",
+  "pydantic-settings>=2.7,<2.8",
+  "redis>=5.2,<6.0",
+  "sqlalchemy>=2.0,<2.1",
+  "uvicorn[standard]>=0.34,<0.35",
+]
+
+[dependency-groups]
+dev = [
+  "mypy>=1.14,<1.15",
+  "pytest>=8.3,<8.4",
+  "ruff>=0.9,<0.10",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+pythonpath = ["backend"]
+addopts = "-ra -m 'not integration'"
+markers = [
+  "integration: requires the project-owned PostgreSQL database",
+  "ingress_integration: requires the project-owned PostgreSQL and Redis services",
+  "conversation_integration: requires the project-owned PostgreSQL and Redis services",
+  "planning_integration: requires the project-owned PostgreSQL and Redis services",
+  "delivery_integration: requires the project-owned PostgreSQL and Redis services",
+  "demo_integration: proves guarded local-demo behavior with fake adapters",
+  "personality_integration: requires project PostgreSQL personality configuration schema",
+  "command_integration: requires project PostgreSQL and Redis command schema",
+  "memory_integration: requires project PostgreSQL and Redis memory/privacy schema",
+  "safety_integration: requires project PostgreSQL and Redis safety/rate schema",
+  "governance_integration: requires project PostgreSQL governance/export schema",
+  "provider_governance_integration: requires project PostgreSQL/Redis provider governance schema",
+  "telegram_media_integration: requires project PostgreSQL/Redis media recovery schema",
+  "scheduling_integration: requires project PostgreSQL proactive scheduling schema",
+  "multi_tenant_integration: requires project PostgreSQL SPEC-030 tenancy schema",
+  "knowledge_rag_integration: requires project PostgreSQL and Qdrant for SPEC-033",
+  "telegram_conversation_ux_integration: requires project PostgreSQL for SPEC-034",
+  "telegram_presence_integration: requires project PostgreSQL/Redis for SPEC-035",
+  "telegram_regeneration_integration: requires project PostgreSQL for SPEC-036",
+  "telegram_reactions_integration: requires project PostgreSQL for SPEC-037",
+  "telegram_voice_tts_integration: requires project PostgreSQL for SPEC-038",
+  "conversation_feedback_integration: requires project PostgreSQL for SPEC-039",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+src = ["backend"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["backend/app"]
+strict = true
+warn_unreachable = true

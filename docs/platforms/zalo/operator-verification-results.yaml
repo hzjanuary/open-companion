@@ -1,0 +1,85 @@
+spec: SPEC-014
+baseline_commit: private-source-checkpoint-omitted
+status: BLOCKED
+environment: dedicated_nonproduction
+executed_at: null
+operator_live_verification: false
+decision: STILL_BLOCKED
+operator_environment_update:
+  dedicated_oa_app_available: false
+  personal_accounts_permitted_as_test_participants_only: true
+  personal_account_runtime_identity_permitted: false
+  notes: "USER-A and USER-B may participate only after a supported dedicated OA/app test gate exists."
+source_refresh:
+  checked_at: 2026-08-01
+  changed_since_spec_013: true
+  notes: "The official OA news index lists a 30/07/2026 product update. No anonymous source detail changed the SPEC-013 capability decision."
+checks:
+  AUTH-001:
+    status: NOT_RUN
+    test_preconditions: "Dedicated test OA/app, operator authorization, and local ignored secrets confirmed."
+    operator_action: "Not performed."
+    observed_result: "Dedicated nonproduction OA/app is unavailable; no token, app, or OA data collected."
+    official_source_ids: [ZALO-AUTH-001, ZALO-OA-001]
+    confidence: low
+    product_implication: "OA direct and GMF adapter work remain blocked."
+    follow_up: "Wait for a dedicated OA/app; personal accounts cannot supply January runtime identity."
+  WEBHOOK-001:
+    status: NOT_RUN
+    test_preconditions: "AUTH-001 passed; temporary HTTPS callback under operator control."
+    operator_action: "Not performed."
+    observed_result: "No callback registered; no dedicated OA/app exists to emit a supported webhook."
+    official_source_ids: [ZALO-WEBHOOK-001, ZALO-WEBHOOK-002]
+    confidence: low
+    product_implication: "No trusted Zalo ingress design can be approved."
+    follow_up: "Verify registration, trust fields, retry, duplicate, ordering, and timeout behavior."
+  OA-DIRECT-001:
+    status: NOT_RUN
+    test_preconditions: "AUTH-001 and WEBHOOK-001 passed; USER-A has opted into a test interaction."
+    operator_action: "Not performed."
+    observed_result: "No direct message was sent or received because no OA runtime identity exists."
+    official_source_ids: [ZALO-MSG-001, ZALO-MSG-002, ZALO-POLICY-001]
+    confidence: low
+    product_implication: "OA direct assistant remains unapproved."
+    follow_up: "Use the two fixed synthetic messages and capture aliases/field observations only."
+  GMF-001:
+    status: NOT_RUN
+    test_preconditions: "AUTH-001 passed, GMF entitlement confirmed, and operator approved test-group mutation."
+    operator_action: "Not performed."
+    observed_result: "No GMF was created, listed, or modified because no entitled OA/app exists."
+    official_source_ids: [ZALO-GMF-001, ZALO-GMF-002, ZALO-POLICY-002]
+    confidence: low
+    product_implication: "GMF identity, membership, roles, and quotas remain unknown."
+    follow_up: "Verify only a dedicated test GMF."
+  GMF-002:
+    status: NOT_RUN
+    test_preconditions: "GMF-001 passed and test members are operator-approved."
+    operator_action: "Not performed."
+    observed_result: "No group operation was attempted; personal accounts are not a supported January runtime identity."
+    official_source_ids: [ZALO-GMF-001, ZALO-GMF-002, ZALO-WEBHOOK-001]
+    confidence: low
+    product_implication: "OA-managed GMF assistant remains unapproved."
+    follow_up: "Verify each messaging semantic independently; do not infer ordinary-group parity."
+  PRIVATE-GROUP-001:
+    status: NOT_RUN
+    test_preconditions: "Current official UI/docs/support evidence or manual product observation, without personal-account automation."
+    operator_action: "Not performed."
+    observed_result: "No supported public-API ordinary friend-group path demonstrated; manual consumer-app observation is not API proof."
+    official_source_ids: [ZALO-GMF-001, ZALO-DEV-001]
+    confidence: low
+    product_implication: "Scope C is excluded from all future adapter decisions."
+    follow_up: "Record one of SUPPORTED_OFFICIALLY, NOT_SUPPORTED_OFFICIALLY, or NOT_ESTABLISHED."
+  COMMERCIAL-001:
+    status: NOT_RUN
+    test_preconditions: "Dedicated test OA/app and operator approval to inspect current package/entitlements only."
+    operator_action: "Not performed."
+    observed_result: "No package, purchase, upgrade, or entitlement query occurred because no test OA exists."
+    official_source_ids: [ZALO-POLICY-001, ZALO-POLICY-002, ZALO-CHANGELOG-001]
+    confidence: medium
+    product_implication: "No production entitlement guarantee exists."
+    follow_up: "Record current verification, OpenAPI, messaging, GMF, package, and review state without purchase."
+privacy:
+  credentials_committed: false
+  raw_payloads_committed: false
+  personal_data_committed: false
+recommended_next_scope: "Zalo Operator Verification Gate"

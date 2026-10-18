@@ -1,0 +1,28 @@
+# Harness core maintenance binary
+scripts/bin/harness
+scripts/bin/harness.exe
+
+# Python and local configuration
+.venv/
+.tools/
+.uv-cache/
+.uv-python/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.env
+.env.self-host
+.env.local
+.env.*.local
+.env.demo
+.env.zalo-verification.local
+# Local-only evidence, logs and credentials (never publish)
+/.local/
+.local/zalo-verification/
+.runtime/
+.local/self-host/
+
+# Optional Graphify derived state (including cache/cost/work/learning overlays)
+graphify-out/
+*.py[cod]

@@ -1,0 +1,82 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:${JANUARY_HOST_PORT:-8000}:8000"
+    environment:
+      JANUARY_ENVIRONMENT: local
+      JANUARY_LOG_LEVEL: INFO
+      JANUARY_METRICS_ENABLED: ${JANUARY_METRICS_ENABLED:-false}
+      JANUARY_METRICS_EXPORT_ENABLED: ${JANUARY_METRICS_EXPORT_ENABLED:-false}
+      JANUARY_METRICS_BIND_HOST: ${JANUARY_METRICS_BIND_HOST:-127.0.0.1}
+      JANUARY_METRICS_PORT: ${JANUARY_METRICS_PORT:-9464}
+      JANUARY_METRICS_PROVIDER_PRICING: ${JANUARY_METRICS_PROVIDER_PRICING:-{}}
+      JANUARY_DATABASE_HOST: database
+      JANUARY_DATABASE_PORT: 5432
+      JANUARY_DATABASE_NAME: ${JANUARY_DATABASE_NAME:-january}
+      JANUARY_DATABASE_USER: ${JANUARY_DATABASE_USER:-january}
+      JANUARY_DATABASE_PASSWORD: ${JANUARY_DATABASE_PASSWORD:-january-local}
+      JANUARY_REDIS_URL: redis://redis:6379/0
+      JANUARY_QDRANT_URL: http://qdrant:6333
+      JANUARY_SEMANTIC_MEMORY_ENABLED: ${JANUARY_SEMANTIC_MEMORY_ENABLED:-false}
+      JANUARY_SEMANTIC_MEMORY_WORKER_ENABLED: ${JANUARY_SEMANTIC_MEMORY_WORKER_ENABLED:-false}
+      JANUARY_KNOWLEDGE_RAG_ENABLED: ${JANUARY_KNOWLEDGE_RAG_ENABLED:-false}
+      JANUARY_KNOWLEDGE_INDEX_WORKER_ENABLED: ${JANUARY_KNOWLEDGE_INDEX_WORKER_ENABLED:-false}
+      JANUARY_KNOWLEDGE_QDRANT_COLLECTION_PREFIX: ${JANUARY_KNOWLEDGE_QDRANT_COLLECTION_PREFIX:-january_knowledge}
+      JANUARY_EMBEDDING_PROVIDER: ${JANUARY_EMBEDDING_PROVIDER:-}
+      JANUARY_EMBEDDING_MODEL: ${JANUARY_EMBEDDING_MODEL:-}
+      JANUARY_EMBEDDING_DIMENSION: ${JANUARY_EMBEDDING_DIMENSION:-768}
+      JANUARY_RATE_LIMIT_ENABLED: "true"
+      JANUARY_TELEGRAM_ENABLED: ${JANUARY_TELEGRAM_ENABLED:-false}
+      JANUARY_TELEGRAM_BOT_TOKEN: ${JANUARY_TELEGRAM_BOT_TOKEN:-}
+      JANUARY_TELEGRAM_DELIVERY_MODE: ${JANUARY_TELEGRAM_DELIVERY_MODE:-disabled}
+      JANUARY_TELEGRAM_PLATFORM_CONNECTION_ID: ${JANUARY_TELEGRAM_PLATFORM_CONNECTION_ID:-}
+      JANUARY_TELEGRAM_WEBHOOK_SECRET_TOKEN: ${JANUARY_TELEGRAM_WEBHOOK_SECRET_TOKEN:-}
+      JANUARY_TELEGRAM_WEBHOOK_PUBLIC_BASE_URL: ${JANUARY_TELEGRAM_WEBHOOK_PUBLIC_BASE_URL:-}
+    depends_on:
+      database:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+  database:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${JANUARY_DATABASE_NAME:-january}
+      POSTGRES_USER: ${JANUARY_DATABASE_USER:-january}
+      POSTGRES_PASSWORD: ${JANUARY_DATABASE_PASSWORD:-january-local}
+    ports:
+      - "127.0.0.1:${JANUARY_DB_HOST_PORT:-5432}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    volumes:
+      - january-postgres-data:/var/lib/postgresql/data
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "127.0.0.1:${JANUARY_REDIS_HOST_PORT:-6379}:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+  qdrant:
+    image: qdrant/qdrant:v1.13.4
+    profiles: ["qdrant"]
+    ports:
+      - "127.0.0.1:${JANUARY_QDRANT_HOST_PORT:-6333}:6333"
+    healthcheck:
+      test: ["CMD", "/qdrant/qdrant", "--version"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    volumes:
+      - january-qdrant-data:/qdrant/storage
+
+volumes:
+  january-postgres-data:
+  january-qdrant-data:

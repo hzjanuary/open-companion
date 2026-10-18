@@ -1,0 +1,22 @@
+{
+  "effective_at": "2000-01-01T00:00:00Z",
+  "data_class": "approved_external",
+  "json_schema_supported": false,
+  "input_microusd_per_million": null,
+  "output_microusd_per_million": null,
+  "health": {
+    "observation_window_seconds": null,
+    "degraded_threshold": null,
+    "unavailable_threshold": null,
+    "recovery_success_threshold": null,
+    "stale_after_seconds": null
+  },
+  "budgets": [
+    {
+      "measurement": "estimated_cost_microusd",
+      "window_kind": "daily_utc",
+      "amount": null,
+      "alert_threshold_bps": null
+    }
+  ]
+}

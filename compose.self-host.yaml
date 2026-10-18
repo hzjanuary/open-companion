@@ -1,0 +1,213 @@
+# Full existing bot topology. Native development remains in compose.yaml.
+# Use the guide/doctor before starting; profiles never authorize live I/O.
+x-runtime: &runtime
+  image: ${JANUARY_BACKEND_IMAGE:-january-self-host:checkout}
+  build:
+    context: .
+    dockerfile: Dockerfile
+  env_file:
+    - path: ${JANUARY_SELF_HOST_ENV_FILE:-.env.self-host}
+      format: raw
+  environment: &runtime-environment
+    JANUARY_ENVIRONMENT: local
+    JANUARY_LOG_LEVEL: INFO
+    JANUARY_DATABASE_HOST: database
+    JANUARY_DATABASE_PORT: "5432"
+    JANUARY_DATABASE_URL: ""
+    JANUARY_DATABASE_ECHO: "false"
+    JANUARY_REDIS_URL: redis://redis:6379/0
+    JANUARY_QDRANT_URL: http://qdrant:6333
+    JANUARY_RATE_LIMIT_ENABLED: "true"
+    JANUARY_PROVIDER_CONCURRENCY_ENABLED: "true"
+    JANUARY_SAFETY_MODERATION_ENABLED: "true"
+    JANUARY_PROVIDER_GOVERNANCE_MODE: enforce
+    JANUARY_PROVIDER_GOVERNANCE_WORKER_ENABLED: "true"
+    JANUARY_CONTROL_PLANE_ENABLED: "true"
+    JANUARY_DATA_GOVERNANCE_ENABLED: "true"
+    JANUARY_GOVERNANCE_WORKER_ENABLED: "true"
+    JANUARY_RETENTION_WORKER_ENABLED: "true"
+    JANUARY_DEMO_LIVE_ENABLED: "false"
+    JANUARY_DEMO_LIVE_TELEGRAM_VERIFICATION_ENABLED: "false"
+    JANUARY_LLM_LIVE_VERIFICATION_ENABLED: "false"
+    JANUARY_TELEGRAM_LIVE_DELIVERY_VERIFICATION_ENABLED: "false"
+  depends_on:
+    migration:
+      condition: service_completed_successfully
+    redis:
+      condition: service_healthy
+  profiles: ["polling", "webhook"]
+  restart: unless-stopped
+  stop_grace_period: 90s
+
+services:
+  setup-tool:
+    image: ${JANUARY_BACKEND_IMAGE:-january-self-host:checkout}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["python", "/app/self-host/setup_operator.py", "check"]
+    # Explicit one-shot operation only. Use the host operator UID/GID when
+    # writing private files; this profile starts no dependencies or live calls.
+    volumes:
+      - .:/workspace
+    profiles: ["tools"]
+    restart: "no"
+
+  database:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${JANUARY_DATABASE_NAME:-january}
+      POSTGRES_USER: ${JANUARY_DATABASE_USER:-january}
+      POSTGRES_PASSWORD: ${JANUARY_DATABASE_PASSWORD:-}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    volumes:
+      - january-self-host-postgres:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    restart: unless-stopped
+
+  migration:
+    image: ${JANUARY_BACKEND_IMAGE:-january-self-host:checkout}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["alembic", "upgrade", "0026_conversation_feedback"]
+    # Only database configuration; this one-shot process cannot send or generate.
+    environment:
+      JANUARY_ENVIRONMENT: local
+      JANUARY_DATABASE_HOST: database
+      JANUARY_DATABASE_PORT: "5432"
+      JANUARY_DATABASE_NAME: ${JANUARY_DATABASE_NAME:-january}
+      JANUARY_DATABASE_USER: ${JANUARY_DATABASE_USER:-january}
+      JANUARY_DATABASE_PASSWORD: ${JANUARY_DATABASE_PASSWORD:-}
+      JANUARY_DATABASE_ECHO: "false"
+    depends_on:
+      database:
+        condition: service_healthy
+    profiles: ["setup", "polling", "webhook"]
+    restart: "no"
+
+  operator-api:
+    <<: *runtime
+    # Setup is private and cannot ingest, deliver or invoke a model.
+    environment:
+      <<: *runtime-environment
+      JANUARY_TELEGRAM_ENABLED: "false"
+      JANUARY_TELEGRAM_DELIVERY_MODE: disabled
+      JANUARY_OUTBOUND_DELIVERY_ENABLED: "false"
+      JANUARY_LLM_ENABLED: "false"
+      JANUARY_TELEGRAM_MEDIA_ENABLED: "false"
+      JANUARY_TELEGRAM_VOICE_TTS_ENABLED: "false"
+      JANUARY_CONVERSATION_SUMMARIES_ENABLED: "false"
+      JANUARY_SUMMARY_WORKER_ENABLED: "false"
+      JANUARY_SEMANTIC_MEMORY_ENABLED: "false"
+      JANUARY_SEMANTIC_MEMORY_WORKER_ENABLED: "false"
+      JANUARY_KNOWLEDGE_RAG_ENABLED: "false"
+      JANUARY_KNOWLEDGE_INDEX_WORKER_ENABLED: "false"
+      JANUARY_PROACTIVE_SCHEDULING_ENABLED: "false"
+      JANUARY_SCHEDULER_WORKER_ENABLED: "false"
+    profiles: ["setup"]
+    healthcheck: &api-health
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=5)"]
+      interval: 3s
+      timeout: 6s
+      retries: 20
+
+  backend:
+    <<: *runtime
+    ports:
+      - "127.0.0.1:${JANUARY_HOST_PORT:-8000}:8000"
+    healthcheck: *api-health
+
+  poller:
+    <<: *runtime
+    command: ["python", "/app/self-host/runtime.py", "telegram_poller"]
+    profiles: ["polling"]
+
+  dispatcher:
+    <<: *runtime
+    command: ["python", "/app/self-host/runtime.py", "ingress_outbox_dispatcher"]
+
+  conversation-worker:
+    <<: *runtime
+    command: ["python", "/app/self-host/runtime.py", "conversation_worker"]
+
+  planning-worker:
+    <<: *runtime
+    command: ["python", "/app/self-host/runtime.py", "response_planning_worker"]
+
+  command-worker:
+    <<: *runtime
+    command: ["python", "/app/self-host/runtime.py", "telegram_command_worker"]
+
+  outbound-worker:
+    <<: *runtime
+    command: ["python", "/app/self-host/runtime.py", "outbound_delivery_worker"]
+
+  provider-governance-worker:
+    <<: *runtime
+    command: ["python", "/app/self-host/runtime.py", "provider_governance_worker"]
+
+  governance-worker:
+    <<: *runtime
+    command: ["python", "/app/self-host/runtime.py", "governance_worker"]
+
+  retention-worker:
+    <<: *runtime
+    command: ["python", "/app/self-host/runtime.py", "retention_worker"]
+
+  scheduler:
+    <<: *runtime
+    command: ["python", "/app/self-host/runtime.py", "proactive_scheduler_worker"]
+    profiles: ["scheduling"]
+
+  summary-worker:
+    <<: *runtime
+    command: ["python", "/app/self-host/runtime.py", "conversation_summary_worker"]
+    profiles: ["summaries"]
+
+  semantic-memory-worker:
+    <<: *runtime
+    command: ["python", "/app/self-host/runtime.py", "semantic_memory_index_worker"]
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+    profiles: ["semantic-memory"]
+
+  knowledge-index-worker:
+    <<: *runtime
+    command: ["python", "/app/self-host/runtime.py", "knowledge_index_worker"]
+    depends_on:
+      migration:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+    profiles: ["knowledge-rag"]
+
+  qdrant:
+    image: qdrant/qdrant:v1.13.4
+    volumes:
+      - january-self-host-qdrant:/qdrant/storage
+    profiles: ["qdrant", "semantic-memory", "knowledge-rag"]
+    restart: unless-stopped
+
+volumes:
+  january-self-host-postgres:
+  january-self-host-qdrant:

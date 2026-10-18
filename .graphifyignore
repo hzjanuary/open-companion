@@ -1,0 +1,25 @@
+# Additional exclusions, merged with .gitignore by audited Graphify 0.9.74.
+# Authoritative app, migrations, scripts, docs and tests remain in scope.
+.git/
+.env
+.env.*
+.venv/
+.tools/
+.uv-cache/
+.uv-python/
+.runtime/
+.local/
+graphify-out/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+backups/
+*.backup
+*.bak
+*.dump
+*.sql.gz
+*.pem
+*.key
+credentials/
+secrets/
