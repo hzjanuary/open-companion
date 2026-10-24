@@ -3,6 +3,7 @@
 import importlib.util
 import json
 import logging
+import subprocess
 import sys
 from pathlib import Path
 from types import ModuleType, SimpleNamespace
@@ -33,6 +34,63 @@ def launcher() -> ModuleType:
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
+
+@pytest.fixture
+def acceptance_harness() -> ModuleType:
+    spec = importlib.util.spec_from_file_location(
+        "self_host_acceptance_under_test",
+        ROOT / "backend/tests/integration/test_self_host_runtime.py",
+    )
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+@pytest.mark.parametrize(
+    "executable,status,category",
+    [
+        ("curl", 7, "connection_failed"),
+        ("curl", 22, "http_error"),
+        ("curl", 28, "timeout"),
+        ("docker", 1, "command_failure"),
+    ],
+)
+def test_acceptance_failure_keeps_exit_category_without_private_details(
+    executable: str,
+    status: int,
+    category: str,
+    acceptance_harness: ModuleType,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    canary = "SYNTHETIC-PRIVATE-COMMAND-DETAIL"
+    command = [executable, canary]
+    monkeypatch.setattr(
+        acceptance_harness.subprocess,
+        "run",
+        lambda *args, **kwargs: subprocess.CompletedProcess(
+            command, status, stdout=canary, stderr=canary
+        ),
+    )
+    with pytest.raises(AssertionError) as error:
+        acceptance_harness.execute(command)
+    message = str(error.value)
+    assert f"{executable} exit={status} category={category}" in message
+    assert canary not in message
+
+
+def test_acceptance_success_preserves_command_output(
+    acceptance_harness: ModuleType, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(
+        acceptance_harness.subprocess,
+        "run",
+        lambda *args, **kwargs: subprocess.CompletedProcess(
+            ["docker"], 0, stdout="safe-metadata", stderr=""
+        ),
+    )
+    assert acceptance_harness.execute(["docker"]) == "safe-metadata"
 
 
 WORKERS = (

@@ -1,6 +1,7 @@
 import asyncio
 from datetime import UTC, datetime, timedelta
 from typing import cast
+from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import pytest
@@ -52,6 +53,7 @@ from app.infrastructure.governed_provider import (
     GovernedModelProvider,
 )
 from app.infrastructure.telemetry import InMemoryMetricsRecorder
+from app.interface.http.dependencies import database_session
 from app.interface.http.provider_governance_control import (
     BudgetInput,
     CapabilityInput,
@@ -60,6 +62,7 @@ from app.interface.http.provider_governance_control import (
 )
 from app.main import create_app
 from app.runtime.conversation_summary_worker import _generate_governed_summary
+from tests.conftest import AppClient
 
 
 @pytest.mark.parametrize(
@@ -209,20 +212,34 @@ def test_control_contract_rejects_unknown_schema_and_invalid_price_shape() -> No
 
 
 def test_control_routes_exist_only_behind_existing_control_plane() -> None:
-    disabled = {route.path for route in create_app(Settings()).routes}
-    assert "/control/v1/deployment/provider-budgets" not in disabled
+    disabled_app = create_app(Settings())
+    disabled = disabled_app.openapi()["paths"]
+    budget_path = "/control/v1/deployment/provider-budgets"
+    usage_path = (
+        "/control/v1/tenants/{tenant_id}/connections/{resource_id}"
+        "/provider-usage-summary"
+    )
+    assert budget_path not in disabled
+    assert usage_path not in disabled
     settings = Settings(
         control_plane_enabled=True,
         control_plane_jwt_secret="x" * 32,
         control_plane_jwt_issuer="issuer",
         control_plane_jwt_audience="audience",
     )
-    enabled = {route.path for route in create_app(settings).routes}
-    assert "/control/v1/deployment/provider-budgets" in enabled
-    assert (
-        "/control/v1/tenants/{tenant_id}/connections/{resource_id}/provider-usage-summary"
-        in enabled
-    )
+    enabled_app = create_app(settings)
+    enabled = enabled_app.openapi()["paths"]
+    assert budget_path in enabled
+    assert usage_path in enabled
+
+    async def session_override():
+        yield AsyncMock()
+
+    enabled_app.dependency_overrides[database_session] = session_override
+    concrete_usage = usage_path.format(tenant_id=uuid4(), resource_id=uuid4())
+    for path in (budget_path, concrete_usage):
+        assert AppClient(disabled_app).get(path).status_code == 404
+        assert AppClient(enabled_app).get(path).status_code == 401
 
 
 def test_governed_modes_require_control_plane_and_recovery_worker() -> None:
