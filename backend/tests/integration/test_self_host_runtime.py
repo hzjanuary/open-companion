@@ -87,8 +87,18 @@ def execute(command: list[str], *, timeout: int = 120) -> str:
         check=False,
         timeout=timeout,
     )
+    executable = Path(command[0]).name
+    category = (
+        {7: "connection_failed", 22: "http_error", 28: "timeout"}.get(
+            result.returncode, "curl_failure"
+        )
+        if executable == "curl"
+        else "command_failure"
+    )
     require(
-        result.returncode == 0, "Owned runtime proof command failed (details redacted)"
+        result.returncode == 0,
+        f"Owned runtime proof command failed: {executable} "
+        f"exit={result.returncode} category={category} (details redacted)",
     )
     return result.stdout
 

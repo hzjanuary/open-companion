@@ -959,9 +959,7 @@ def test_retrieval_is_single_use_and_deployment_export_requires_operator(
                 assert second.status_code == 404
 
             governance_paths = [
-                str(getattr(route, "path", ""))
-                for route in app.routes
-                if "governance/exports" in str(getattr(route, "path", ""))
+                path for path in app.openapi()["paths"] if "governance/exports" in path
             ]
             assert governance_paths == ["/api/v1/governance/exports/retrieve"]
             assert all("{" not in path and "?" not in path for path in governance_paths)

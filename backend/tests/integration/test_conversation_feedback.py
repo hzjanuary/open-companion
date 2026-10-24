@@ -3,6 +3,7 @@
 import asyncio
 import os
 from collections.abc import Awaitable, Callable
+from contextlib import AsyncExitStack
 from datetime import UTC, datetime, timedelta
 from hashlib import sha256
 from uuid import UUID, uuid4
@@ -10,6 +11,7 @@ from uuid import UUID, uuid4
 import pytest
 from sqlalchemy import func, select, text
 from sqlalchemy.exc import DBAPIError
+from sqlalchemy.exc import TimeoutError as SQLAlchemyTimeoutError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.application.governance_export import GovernanceExportBuilder
@@ -390,7 +392,42 @@ async def _start_together(
         await gate.wait()
         return await call()
 
-    return list(await asyncio.gather(*(run(call) for call in calls)))
+    async with asyncio.TaskGroup() as group:
+        tasks = [group.create_task(run(call)) for call in calls]
+    return [task.result() for task in tasks]
+
+
+def test_feedback_concurrency_fixture_joins_failed_siblings() -> None:
+    async def scenario() -> None:
+        entered = asyncio.Event()
+        parked = asyncio.Event()
+        finished = asyncio.Event()
+        failure = SQLAlchemyTimeoutError("Synthetic pool-acquisition failure")
+
+        async def waiting() -> FeedbackOutcome:
+            entered.set()
+            try:
+                await parked.wait()
+            finally:
+                finished.set()
+            return FeedbackOutcome.SAVED
+
+        async def failing() -> FeedbackOutcome:
+            await entered.wait()
+            raise failure
+
+        async with asyncio.timeout(3):
+            with pytest.raises((ExceptionGroup, SQLAlchemyTimeoutError)) as caught:
+                await _start_together(waiting, failing)
+        errors = (
+            caught.value.exceptions
+            if isinstance(caught.value, ExceptionGroup)
+            else (caught.value,)
+        )
+        assert failure in errors
+        assert finished.is_set()
+
+    asyncio.run(scenario())
 
 
 class _NoExternalCalls:
@@ -760,9 +797,26 @@ def test_feedback_concurrent_duplicate_command_is_one_operation() -> None:
 
 def test_feedback_concurrent_opposite_commands_have_no_lost_updates() -> None:
     async def scenario() -> None:
-        database = Database(Settings(_env_file=None, environment="test"))  # type: ignore[call-arg]
+        # Provision this atomicity proof for all 100 simultaneous operations.
+        # All 100 operations still rendezvous together; the production pool
+        # defaults and the connection-acquisition timeout remain unchanged.
+        database = Database(
+            Settings(  # type: ignore[call-arg]
+                _env_file=None,
+                environment="test",
+                database_pool_size=50,
+                database_max_overflow=50,
+            )
+        )
         await database.start()
         try:
+            # Warm retained slots before the operation barrier; bounded overflow
+            # admits the other 50 tasks without waiting for a pool slot.
+            async with AsyncExitStack() as connections:
+                for _ in range(50):
+                    await connections.enter_async_context(database.engine.connect())
+                assert database.engine.pool.checkedout() == 50
+            assert database.engine.pool.checkedout() == 0
             suffix = uuid4().hex
             async with database.session_factory() as session, session.begin():
                 conversation, first_participant = await _authority(session, suffix)
@@ -820,6 +874,7 @@ def test_feedback_concurrent_opposite_commands_have_no_lost_updates() -> None:
                 )
             results = await _start_together(*calls)
             assert results == [FeedbackOutcome.SAVED] * 100
+            assert database.engine.pool.checkedout() == 0
             async with database.session_factory() as session:
                 states = list(
                     await session.scalars(
@@ -857,8 +912,11 @@ def test_feedback_concurrent_opposite_commands_have_no_lost_updates() -> None:
                 assert len(latest) == 50
                 assert all(state.value == latest[state.id] for state in states)
         finally:
-            await _cleanup_feedback_authority(database)
-            await database.stop()
+            try:
+                await _cleanup_feedback_authority(database)
+                assert database.engine.pool.checkedout() == 0
+            finally:
+                await database.stop()
 
     asyncio.run(scenario())
 
