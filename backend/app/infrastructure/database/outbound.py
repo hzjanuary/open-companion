@@ -326,6 +326,72 @@ async def _update_scheduled_occurrence(
     occurrence.completed_at = now
 
 
+async def expire_outbound_action(
+    session: AsyncSession, action: OutboundActionModel, now: datetime
+) -> None:
+    """Fence expired work under its row lock without inventing delivery certainty."""
+    if action.status not in {
+        OutboundActionStatus.PENDING,
+        OutboundActionStatus.FALLBACK_BLOCKED,
+        OutboundActionStatus.LEASED,
+    }:
+        return
+    attempt = await session.scalar(
+        select(OutboundDeliveryAttemptModel)
+        .where(
+            OutboundDeliveryAttemptModel.outbound_action_id == action.id,
+            OutboundDeliveryAttemptModel.attempt_number == action.attempt_count,
+        )
+        .with_for_update()
+    )
+    unknown = attempt is not None and attempt.external_started_at is not None
+    certainty = DeliveryCertainty.UNKNOWN if unknown else DeliveryCertainty.NOT_SENT
+    action.status = (
+        OutboundActionStatus.DELIVERY_UNKNOWN
+        if unknown
+        else OutboundActionStatus.PERMANENTLY_FAILED
+    )
+    action.lease_owner = None
+    action.lease_expires_at = None
+    action.completed_at = now
+    action.last_error_category = "retention_expired"
+    action.last_error_at = now
+    if attempt is not None and attempt.status == DeliveryAttemptStatus.STARTED:
+        attempt.status = (
+            DeliveryAttemptStatus.UNKNOWN if unknown else DeliveryAttemptStatus.REJECTED
+        )
+        attempt.certainty = certainty
+        attempt.finished_at = now
+        attempt.error_category = "retention_expired"
+    if unknown:
+        action.delivery_unknown_at = now
+        recovery = await session.scalar(
+            select(OperationalRecoveryItemModel)
+            .where(
+                OperationalRecoveryItemModel.work_kind == RecoveryKind.OUTBOUND,
+                OperationalRecoveryItemModel.work_id == action.id,
+            )
+            .with_for_update()
+        )
+        if recovery is None:
+            recovery = OperationalRecoveryItemModel(
+                work_kind=RecoveryKind.OUTBOUND,
+                work_id=action.id,
+                disposition=RecoveryDisposition.QUARANTINE,
+                reason=RecoveryReason.AMBIGUOUS_EXTERNAL_DELIVERY,
+            )
+            session.add(recovery)
+            await session.flush()
+        session.add(
+            OperationalRecoveryEventModel(
+                recovery_item_id=recovery.id, event_type="classified", actor="runtime"
+            )
+        )
+    await _update_scheduled_occurrence(
+        session, action, action.status, certainty, now, "retention_expired"
+    )
+
+
 class SqlAlchemyOutboundRepository:
     def __init__(self, session_factory: async_sessionmaker[AsyncSession]) -> None:
         self._session_factory = session_factory

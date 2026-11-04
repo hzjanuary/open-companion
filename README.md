@@ -4,7 +4,7 @@ Self-hosted social AI companion for Telegram.
 
 **v0.1.0 — NOT YET PUBLISHED.** This source snapshot awaits independent
 review. No release tag or official prebuilt image exists from this work. The
-planned public repository is [hzjanuary/open-companion](https://github.com/hzjanuary/open-companion).
+public repository is [hzjanuary/open-companion](https://github.com/hzjanuary/open-companion).
 
 [Quality workflow](.github/workflows/ci.yml)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](pyproject.toml)
@@ -44,8 +44,7 @@ and a configured model provider. Host Python, uv, public HTTPS, Qdrant and
 Graphify are not required for this path.
 
 The [self-hosted quickstart](docs/runbooks/self-hosted-quickstart.md) is the
-complete setup guide. Use the reviewed source archive during preparation.
-Once the owner publishes the repository, the checkout commands will be:
+complete setup guide. Clone the existing public repository:
 
 ```bash
 git clone https://github.com/hzjanuary/open-companion.git

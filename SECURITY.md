@@ -4,11 +4,11 @@ Do not publish bot tokens, provider keys, JWT/database secrets, full `.env` or
 Compose dumps, private conversations, model prompts, raw provider responses,
 database backups or exploitable vulnerability details in a public issue.
 
-If this repository's GitHub Security page offers private vulnerability reporting,
-use that private channel. Availability for the planned public repository remains unverified. This document does not claim a working
-private channel or invent a reporting email address.
+Use [GitHub Private Vulnerability Reporting](https://github.com/hzjanuary/open-companion/security/advisories/new).
+The repository owner enabled this channel and its enabled state was verified
+through the GitHub API on 2026-11-01. No security mailbox is maintained here.
 
-If no private channel is offered, request a private contact method without
+If the private channel becomes unavailable, request a private contact method without
 including sensitive details or an exploit. Wait for the maintainer to confirm
 the channel before sending those details. Maintainers should confirm private
 reporting before publishing the self-host distribution candidate.

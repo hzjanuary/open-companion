@@ -1,21 +1,21 @@
-"""Bounded, content-clearing retention mutations for terminal records."""
+"""Bounded raw-content retention, expiry fencing and separate memory lifecycles."""
 
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from uuid import UUID
 
-from sqlalchemy import delete, select, update
+from sqlalchemy import delete, func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 from sqlalchemy.sql.base import Executable
 
 from app.domain.outbound import OutboundActionStatus
 from app.domain.persistence import (
+    CommandAuthorizationOutcome,
     CommandJobStatus,
     MemoryDeletionReason,
     MemoryKind,
     MemoryScope,
     MemoryStatus,
-    MessageProcessingStatus,
 )
 from app.domain.scheduling import OccurrenceStatus, ScheduleStatus
 from app.domain.summary import ConversationSummaryStatus, SummaryInvalidationReason
@@ -41,6 +41,7 @@ from app.infrastructure.database.models import (
     ResponsePlanModel,
     TelegramCommandJobModel,
 )
+from app.infrastructure.database.outbound import expire_outbound_action
 from app.infrastructure.database.semantic_memory import (
     SqlAlchemySemanticMemoryRepository,
 )
@@ -234,9 +235,12 @@ async def _redact_messages(
     ids_query = (
         select(MessageModel.id)
         .where(
-            MessageModel.platform_sent_at <= cutoff,
+            func.least(
+                MessageModel.created_at,
+                func.coalesce(MessageModel.platform_sent_at, MessageModel.created_at),
+            )
+            <= cutoff,
             MessageModel.content_redacted_at.is_(None),
-            MessageModel.processing_status != MessageProcessingStatus.PENDING,
         )
         .order_by(MessageModel.platform_sent_at, MessageModel.id)
         .limit(limit)
@@ -282,53 +286,60 @@ async def _redact_plans(
 async def _redact_actions(
     session: AsyncSession, cutoff: datetime, now: datetime, limit: int
 ) -> int:
-    terminal = (
-        OutboundActionStatus.DELIVERED,
-        OutboundActionStatus.SKIPPED,
-        OutboundActionStatus.PERMANENTLY_FAILED,
-        OutboundActionStatus.DELIVERY_UNKNOWN,
-    )
-    ids = (
-        select(OutboundActionModel.id)
-        .where(
-            OutboundActionModel.created_at <= cutoff,
-            OutboundActionModel.payload_redacted_at.is_(None),
-            OutboundActionModel.status.in_(terminal),
+    actions = list(
+        await session.scalars(
+            select(OutboundActionModel)
+            .where(
+                OutboundActionModel.created_at <= cutoff,
+                OutboundActionModel.payload_redacted_at.is_(None),
+            )
+            .order_by(OutboundActionModel.created_at, OutboundActionModel.id)
+            .limit(limit)
+            .with_for_update(skip_locked=True)
         )
-        .order_by(OutboundActionModel.created_at, OutboundActionModel.id)
-        .limit(limit)
     )
-    return await _count(
-        session,
-        update(OutboundActionModel)
-        .where(OutboundActionModel.id.in_(ids))
-        .values(text=None, sticker_intent=None, payload_redacted_at=now)
-        .returning(OutboundActionModel.id),
-    )
+    for action in actions:
+        await expire_outbound_action(session, action, now)
+        action.text = None
+        action.sticker_intent = None
+        action.payload_redacted_at = now
+    return len(actions)
 
 
 async def _redact_commands(
     session: AsyncSession, cutoff: datetime, now: datetime, limit: int
 ) -> int:
-    ids = (
-        select(TelegramCommandJobModel.id)
-        .where(
-            TelegramCommandJobModel.completed_at <= cutoff,
-            TelegramCommandJobModel.arguments_redacted_at.is_(None),
-            TelegramCommandJobModel.status.in_(
-                (CommandJobStatus.COMPLETED, CommandJobStatus.FAILED)
-            ),
+    jobs = list(
+        await session.scalars(
+            select(TelegramCommandJobModel)
+            .join(MessageModel, MessageModel.id == TelegramCommandJobModel.message_id)
+            .where(
+                func.least(
+                    TelegramCommandJobModel.created_at,
+                    MessageModel.created_at,
+                    func.coalesce(
+                        MessageModel.platform_sent_at, MessageModel.created_at
+                    ),
+                )
+                <= cutoff,
+                TelegramCommandJobModel.arguments_redacted_at.is_(None),
+            )
+            .order_by(TelegramCommandJobModel.created_at, TelegramCommandJobModel.id)
+            .limit(limit)
+            .with_for_update(of=TelegramCommandJobModel, skip_locked=True)
         )
-        .order_by(TelegramCommandJobModel.completed_at, TelegramCommandJobModel.id)
-        .limit(limit)
     )
-    return await _count(
-        session,
-        update(TelegramCommandJobModel)
-        .where(TelegramCommandJobModel.id.in_(ids))
-        .values(arguments="", arguments_redacted_at=now)
-        .returning(TelegramCommandJobModel.id),
-    )
+    for job in jobs:
+        if job.status in {CommandJobStatus.PENDING, CommandJobStatus.LEASED}:
+            job.status = CommandJobStatus.FAILED
+            job.authorization_outcome = CommandAuthorizationOutcome.PERMANENT_FAILURE
+            job.result_code = "retention_expired"
+            job.completed_at = now
+            job.lease_owner = None
+            job.lease_expires_at = None
+        job.arguments = ""
+        job.arguments_redacted_at = now
+    return len(jobs)
 
 
 async def _expire_summaries(session: AsyncSession, now: datetime, limit: int) -> int:

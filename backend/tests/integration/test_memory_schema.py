@@ -18,8 +18,20 @@ from app.application.semantic_memory import (
     embedding_version,
 )
 from app.core.config import Settings
-from app.domain.conversation import EligibilityReason, ProcessingOutcome
-from app.domain.outbound import OutboundActionKind, OutboundActionStatus
+from app.domain.conversation import (
+    ConversationIdentity,
+    EligibilityReason,
+    MembershipStatus,
+    NormalizedMessage,
+    ParticipantIdentity,
+    ProcessingOutcome,
+)
+from app.domain.outbound import (
+    DeliveryAttemptStatus,
+    DeliveryCertainty,
+    OutboundActionKind,
+    OutboundActionStatus,
+)
 from app.domain.persistence import (
     AssistantStatus,
     CommandJobStatus,
@@ -30,13 +42,17 @@ from app.domain.persistence import (
     MessageDirection,
     MessageProcessingStatus,
     MessageType,
+    ParticipantRole,
     Platform,
     PlatformConnectionStatus,
     SemanticMemoryIndexJobStatus,
     SemanticMemoryIndexOperation,
 )
 from app.domain.planning import PlanReasonCode
+from app.domain.recovery import RecoveryDisposition, RecoveryKind, RecoveryReason
 from app.domain.tenancy import LEGACY_TENANT_ID
+from app.infrastructure.database.commands import SqlAlchemyCommandRepository
+from app.infrastructure.database.conversation import SqlAlchemyConversationProcessor
 from app.infrastructure.database.database import Database
 from app.infrastructure.database.memory import SqlAlchemyMemoryRepository
 from app.infrastructure.database.models import (
@@ -51,7 +67,9 @@ from app.infrastructure.database.models import (
     MemoryEventModel,
     MemoryItemModel,
     MessageModel,
+    OperationalRecoveryItemModel,
     OutboundActionModel,
+    OutboundDeliveryAttemptModel,
     ParticipantModel,
     ResponsePlanModel,
     TelegramCommandJobModel,
@@ -59,6 +77,7 @@ from app.infrastructure.database.models import (
 from app.infrastructure.database.models import (
     PlatformConnectionModel as DatabasePlatformConnectionModel,
 )
+from app.infrastructure.database.outbound import SqlAlchemyOutboundRepository
 from app.infrastructure.database.privacy import SqlAlchemyPrivacyRepository
 from app.infrastructure.database.retention import SqlAlchemyRetentionRepository
 from app.infrastructure.database.semantic_memory import (
@@ -1068,6 +1087,259 @@ def test_retention_redacts_terminal_content_at_the_exact_cutoff_idempotently() -
                 assert job_after is not None and job_after.arguments == ""
                 assert plan_after is not None and plan_after.text is None
                 assert action_after is not None and action_after.text is None
+        finally:
+            await database.stop()
+
+    asyncio.run(scenario())
+
+
+@pytest.mark.integration
+@pytest.mark.memory_integration
+def test_raw_retention_expires_stalled_work_without_retrying_unknown_delivery() -> None:
+    async def scenario() -> None:
+        database = Database(Settings(_env_file=None, environment="test"))
+        await database.start()
+        now = datetime.now(UTC)
+        cutoff = now - timedelta(days=30)
+        states = {
+            "pending": OutboundActionStatus.PENDING,
+            "fallback": OutboundActionStatus.FALLBACK_BLOCKED,
+            "leased-before": OutboundActionStatus.LEASED,
+            "leased-after": OutboundActionStatus.LEASED,
+            "delivered": OutboundActionStatus.DELIVERED,
+            "missing-time": OutboundActionStatus.PENDING,
+            "future-time": OutboundActionStatus.PENDING,
+            "fresh": OutboundActionStatus.PENDING,
+        }
+        records: dict[str, tuple[UUID, UUID, UUID]] = {}
+        try:
+            async with database.session_factory() as session:
+                async with session.begin():
+                    await session.execute(text("TRUNCATE assistants CASCADE"))
+                    await _ensure_legacy_tenant(session)
+                    assistant = AssistantModel(name="January")
+                    session.add(assistant)
+                    await session.flush()
+                    connection = PlatformConnectionModel(
+                        assistant_id=assistant.id,
+                        platform=Platform.TELEGRAM,
+                        external_bot_id="synthetic-stalled-retention-bot",
+                        status=PlatformConnectionStatus.ACTIVE,
+                    )
+                    session.add(connection)
+                    await session.flush()
+                    assistant_id, connection_id = assistant.id, connection.id
+            for label, status in states.items():
+                conversation, _, message, command = await _seed_command(
+                    database,
+                    assistant_id=assistant_id,
+                    connection_id=connection_id,
+                    suffix=f"stalled-retention-{label}",
+                )
+                async with database.session_factory() as session:
+                    async with session.begin():
+                        persisted = await session.get(MessageModel, message.id)
+                        job = await session.get(TelegramCommandJobModel, command.id)
+                        assert persisted is not None and job is not None
+                        persisted.platform_sent_at = now if label == "fresh" else cutoff
+                        if label == "missing-time":
+                            persisted.platform_sent_at = None
+                            persisted.created_at = cutoff
+                            job.created_at = cutoff
+                        if label == "future-time":
+                            persisted.platform_sent_at = now + timedelta(days=1)
+                            persisted.created_at = cutoff
+                            job.created_at = now
+                        if label == "pending":
+                            persisted.processing_status = (
+                                MessageProcessingStatus.PENDING
+                            )
+                        if label == "delivered":
+                            # Completion must not restart retention of old source text.
+                            job.status = CommandJobStatus.COMPLETED
+                            job.completed_at = now
+                        elif label.startswith("leased"):
+                            job.status = CommandJobStatus.LEASED
+                            job.lease_owner = "synthetic-stale-owner"
+                            job.lease_expires_at = now + timedelta(days=1)
+                        plan = ResponsePlanModel(
+                            command_job_id=command.id,
+                            should_respond=True,
+                            reason_code=PlanReasonCode.ACKNOWLEDGEMENT,
+                            text="synthetic raw response",
+                            mention_participant_ids=[],
+                            confidence=1.0,
+                            language="en",
+                            prompt_version="test",
+                            schema_version="test",
+                            created_at=now if label == "fresh" else cutoff,
+                        )
+                        session.add(plan)
+                        await session.flush()
+                        action = OutboundActionModel(
+                            response_plan_id=plan.id,
+                            conversation_id=conversation.id,
+                            sequence_number=1,
+                            idempotency_key=f"synthetic-stalled-retention-{label}",
+                            kind=OutboundActionKind.TEXT,
+                            status=status,
+                            text="synthetic raw outbound text",
+                            mention_participant_ids=[],
+                            created_at=now if label == "fresh" else cutoff,
+                        )
+                        if status == OutboundActionStatus.LEASED:
+                            action.lease_owner = "synthetic-stale-owner"
+                            action.lease_expires_at = now + timedelta(days=1)
+                            action.attempt_count = 1
+                        session.add(action)
+                        await session.flush()
+                        if status == OutboundActionStatus.LEASED:
+                            session.add(
+                                OutboundDeliveryAttemptModel(
+                                    outbound_action_id=action.id,
+                                    attempt_number=1,
+                                    operation="sendMessage",
+                                    status=DeliveryAttemptStatus.STARTED,
+                                    certainty=DeliveryCertainty.NOT_SENT,
+                                    external_started_at=(
+                                        now if label == "leased-after" else None
+                                    ),
+                                )
+                            )
+                        records[label] = message.id, command.id, action.id
+            repository = SqlAlchemyRetentionRepository(database.session_factory)
+            totals = {"messages": 0, "command_arguments": 0, "outbound_actions": 0}
+            for _ in range(4):
+                counts = await repository.redact_once(
+                    now=now, retention_days=30, batch_size=2
+                )
+                for name in totals:
+                    value = getattr(counts, name)
+                    assert value <= 2
+                    totals[name] += value
+            assert totals == {name: 7 for name in totals}
+            assert (
+                await repository.redact_once(now=now, retention_days=30, batch_size=2)
+                == type(counts)()
+            )
+            async with database.session_factory() as session:
+                for label, (message_id, command_id, action_id) in records.items():
+                    message = await session.get(MessageModel, message_id)
+                    job = await session.get(TelegramCommandJobModel, command_id)
+                    action = await session.get(OutboundActionModel, action_id)
+                    assert (
+                        message is not None and job is not None and action is not None
+                    )
+                    if label == "fresh":
+                        assert message.text and job.arguments and action.text
+                        assert job.status == CommandJobStatus.PENDING
+                        assert action.status == OutboundActionStatus.PENDING
+                        continue
+                    assert message.text is None and message.metadata_ == {}
+                    assert job.arguments == "" and job.arguments_redacted_at == now
+                    assert action.text is None and action.payload_redacted_at == now
+                    assert action.lease_owner is None
+                    assert action.lease_expires_at is None
+                    if label == "delivered":
+                        assert job.status == CommandJobStatus.COMPLETED
+                        assert action.status == OutboundActionStatus.DELIVERED
+                    else:
+                        assert job.status == CommandJobStatus.FAILED
+                        assert job.result_code == "retention_expired"
+                        assert job.lease_owner is None and job.lease_expires_at is None
+                        assert action.status == (
+                            OutboundActionStatus.DELIVERY_UNKNOWN
+                            if label == "leased-after"
+                            else OutboundActionStatus.PERMANENTLY_FAILED
+                        )
+                    if label.startswith("leased"):
+                        attempt = await session.scalar(
+                            select(OutboundDeliveryAttemptModel).where(
+                                OutboundDeliveryAttemptModel.outbound_action_id
+                                == action_id
+                            )
+                        )
+                        assert attempt is not None and attempt.finished_at == now
+                        assert attempt.status == (
+                            DeliveryAttemptStatus.UNKNOWN
+                            if label == "leased-after"
+                            else DeliveryAttemptStatus.REJECTED
+                        )
+                        assert attempt.certainty == (
+                            DeliveryCertainty.UNKNOWN
+                            if label == "leased-after"
+                            else DeliveryCertainty.NOT_SENT
+                        )
+                recovery = await session.scalar(
+                    select(OperationalRecoveryItemModel).where(
+                        OperationalRecoveryItemModel.work_kind == RecoveryKind.OUTBOUND,
+                        OperationalRecoveryItemModel.work_id
+                        == records["leased-after"][2],
+                    )
+                )
+                assert recovery is not None
+                assert recovery.disposition == RecoveryDisposition.QUARANTINE
+                assert recovery.reason == RecoveryReason.AMBIGUOUS_EXTERNAL_DELIVERY
+            async with database.session_factory() as session:
+                async with session.begin():
+                    message = await session.get(MessageModel, records["pending"][0])
+                    assert message is not None
+                    conversation = await session.get(
+                        ConversationModel, message.conversation_id
+                    )
+                    participant = await session.get(
+                        ParticipantModel, message.participant_id
+                    )
+                    assert conversation is not None and participant is not None
+                    normalized = NormalizedMessage(
+                        conversation=ConversationIdentity(
+                            Platform.TELEGRAM,
+                            connection_id,
+                            conversation.platform_conversation_id,
+                            conversation.conversation_type,
+                            None,
+                            None,
+                        ),
+                        sender=ParticipantIdentity(
+                            participant.platform_user_id,
+                            None,
+                            "Synthetic edit sender",
+                            False,
+                            MembershipStatus.MEMBER,
+                            ParticipantRole.MEMBER,
+                        ),
+                        platform_message_id=message.platform_message_id,
+                        sent_at=cutoff,
+                        message_type="text",
+                        text="synthetic late edit must stay redacted",
+                        reply_to_platform_message_id=None,
+                        platform_thread_id=None,
+                        mentions_assistant=False,
+                        replies_to_assistant=False,
+                        mentions=(),
+                        is_edit=True,
+                        edited_at=now,
+                    )
+                    edited, created = await SqlAlchemyConversationProcessor(
+                        database.session_factory
+                    )._upsert_message(session, conversation, participant, normalized)
+                    assert not created
+                    assert edited.text is None and edited.metadata_ == {}
+                    assert edited.content_redacted_at == now
+            outbound = SqlAlchemyOutboundRepository(database.session_factory)
+            commands = SqlAlchemyCommandRepository(database.session_factory)
+            for label in ("leased-before", "leased-after"):
+                _, command_id, action_id = records[label]
+                assert not await outbound.mark_external_started(
+                    action_id, "synthetic-stale-owner"
+                )
+                assert not await commands.retry(command_id, "synthetic-stale-owner", 0)
+            assert {
+                r.id for r in await outbound.claim("synthetic-new-owner", 20, 30)
+            } == {records["fresh"][2]}
+            assert {
+                r.id for r in await commands.claim("synthetic-new-owner", 20, 30)
+            } == {records["fresh"][1]}
         finally:
             await database.stop()
 

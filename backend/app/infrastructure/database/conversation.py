@@ -511,8 +511,18 @@ class SqlAlchemyConversationProcessor:
             )
             message.participant_id = participant.id
             message.message_type = message_type
-            message.text = normalized.text
-            message.metadata_ = metadata
+            if (
+                message.content_redacted_at is not None
+                or participant.privacy_deleted_at is not None
+            ):
+                message.text = None
+                message.metadata_ = {}
+                message.content_redacted_at = (
+                    message.content_redacted_at or datetime.now(UTC)
+                )
+            else:
+                message.text = normalized.text
+                message.metadata_ = metadata
             message.platform_sent_at = normalized.sent_at
             message.platform_thread_id = normalized.platform_thread_id
             message.edited_at = normalized.edited_at or datetime.now(UTC)

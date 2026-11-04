@@ -1,0 +1,4209 @@
+{
+  "schema": 1,
+  "date": "2026-11-04",
+  "baseline_commit": "612f89c6724261873d38cfa9a9639eb5836cb41a",
+  "scope": "Every current tracked/proposed public source path, classified with recorded or proposed Git mode. This inventory is not an exact-content independent audit manifest. No installed Python environment, external repository, operator state or model weights is included.",
+  "harness_core_version": "0.1.7",
+  "removed_upstream_files": [],
+  "files": [
+    {
+      "path": ".agents/skills/audit-onboarding-proposal/SKILL.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "8aa6e5d75743f747818a72cb2376efea9971882c23ebaaee18489095cad5f53e",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".agents/skills/audit-onboarding-proposal/agents/openai.yaml",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "1f822840d05d627c43e8dcb87a8c54ef28e52c24cba72cf6950c142e360e1a81",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".agents/skills/audit-onboarding-proposal/scripts/validate_evidence_capsule.py",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "9ea918717fa72f9040e851d93c3e9783a6e0100a94d23bec0d31a96f63859cb0",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".agents/skills/onboard-repository/SKILL.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "6e74d8918d352e66cfbfb3f74afd16a832917fe3f360bd983f381c2429550b51",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".agents/skills/onboard-repository/agents/openai.yaml",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "0992cf606b2680397e6aee60db3d39c62aa3d5773acaeefc2f4f1e18103537e9",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".agents/skills/onboard-repository/references/evidence-capsule-v1.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "b9e1f9208842e725289469d0976b3e65670a30ee7f69be6d799cf4ba2a19fadb",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".agents/skills/onboard-repository/references/evidence-capsule-v2.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "e91ef78922e3a196e966a7e60ae53e4894617668887abf165b293d147fb88737",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".agents/skills/onboard-repository/scripts/emit_evidence_bundle.py",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "30583170ed4764b9ee3a147bc6e02ebce5095600a292688b9411825404f9e13f",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".agents/skills/onboard-repository/scripts/render_patch.py",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "9e6b5c4b148e78171695ab964757e792d2a67b32517d08ad113df8de2da9cb38",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".dockerignore",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".env.demo.example",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".env.example",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".env.self-host.example",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".env.zalo-verification.example",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".gitignore",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".graphifyignore",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/.gitignore",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/.agents/skills/audit-onboarding-proposal/SKILL.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "8aa6e5d75743f747818a72cb2376efea9971882c23ebaaee18489095cad5f53e",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/.agents/skills/audit-onboarding-proposal/agents/openai.yaml",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "1f822840d05d627c43e8dcb87a8c54ef28e52c24cba72cf6950c142e360e1a81",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/.agents/skills/audit-onboarding-proposal/scripts/validate_evidence_capsule.py",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "9ea918717fa72f9040e851d93c3e9783a6e0100a94d23bec0d31a96f63859cb0",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/.agents/skills/onboard-repository/SKILL.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "6e74d8918d352e66cfbfb3f74afd16a832917fe3f360bd983f381c2429550b51",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/.agents/skills/onboard-repository/agents/openai.yaml",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "0992cf606b2680397e6aee60db3d39c62aa3d5773acaeefc2f4f1e18103537e9",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/.agents/skills/onboard-repository/references/evidence-capsule-v1.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "b9e1f9208842e725289469d0976b3e65670a30ee7f69be6d799cf4ba2a19fadb",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/.agents/skills/onboard-repository/references/evidence-capsule-v2.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "e91ef78922e3a196e966a7e60ae53e4894617668887abf165b293d147fb88737",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/.agents/skills/onboard-repository/scripts/emit_evidence_bundle.py",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "30583170ed4764b9ee3a147bc6e02ebce5095600a292688b9411825404f9e13f",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/.agents/skills/onboard-repository/scripts/render_patch.py",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "9e6b5c4b148e78171695ab964757e792d2a67b32517d08ad113df8de2da9cb38",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/AGENTS.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "07dcdd653335d02bd49e1371d2ecc9f3d89250fcc5041c8ad01f8bba543e17a9",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/docs/README.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "89974a19e4ff3fe833ff764ad252a7756580be55bf489dc5ba68d7f71e316e65",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/docs/WORKFLOW.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "08ccd7a062d38a566b6f24631a501ba848e64ac31c6fcdb3b03e1abe2de313e8",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/docs/decisions/README.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "521abd46ee1291dfe13a500664f6046723c0f8360728501da434c0292ed92b2b",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/docs/plans/README.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "99a8461fc62f09c966c2c4c5bd2b62ea32cda1e18f8d70f7c939b5dd4b2c68e5",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/docs/plans/active/README.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "aec64998a72585b2a9c4c8909c7ed775c396c4c2e39c71b0ce4ee6e392784160",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/docs/plans/completed/README.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "1ba887f4fb54b7aa45e3f4f619d4b2dfa1eb63d52c09fbbd9588598862346dc7",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/docs/product/README.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "8d1834591efccd4267f475905d32d26d9ba3a6c9d78acf2805bf69af48cb6c01",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/docs/templates/decision.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "e92ba7a5b7bc10ce6c213af75a191619fc305c3945cdd55d4dc6bac72dcd42c1",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/base/docs/templates/exec-plan.md",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "upstream_sha256": "111c40ea8ab63a03561fdb54f235358546788b3a4e1bb26f220da8db50db92b9",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": ".harness-core/manifest.json",
+      "classification": "third-party installed maintainer tooling",
+      "authority": "Repository Harness 0.1.7; upstream MIT retained in NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "AGENTS.md",
+      "classification": "mixed upstream and January maintainer documentation",
+      "authority": "Harness-derived portions retain upstream MIT; January adaptations under project MIT",
+      "mode": "100644",
+      "upstream_sha256": "07dcdd653335d02bd49e1371d2ecc9f3d89250fcc5041c8ad01f8bba543e17a9",
+      "matches_upstream_manifest": false,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "Dockerfile",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "LICENSE",
+      "classification": "legal notices",
+      "authority": "Project MIT and separately scoped upstream MIT obligations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "NOTICE",
+      "classification": "legal notices",
+      "authority": "Project MIT and separately scoped upstream MIT obligations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "PRODUCT.md",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "README.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "SECURITY.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic.ini",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/env.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/script.py.mako",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0001_initial_persistence.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0002_telegram_ingress.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0003_conversation_domain.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0004_response_planning.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0005_outbound_delivery.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0006_personality_config.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0007_telegram_commands.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0008_memory_privacy_retention.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0009_safety_rate_limiting.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0010_operational_recovery.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0011_ambient_participation.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0012_conversation_summaries.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0013_explicit_memory_semantic_index.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0014_authenticated_control_plane.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0015_safety_moderation.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0016_data_governance.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0017_provider_routing_cost_budgets.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0018_user_controlled_memory.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0019_telegram_media.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0020_proactive_scheduling.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0021_multi_assistant_tenancy.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0022_knowledge_base_rag.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0023_telegram_reply_ordered_delivery.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0024_telegram_response_regeneration.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0025_telegram_voice_tts.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "alembic/versions/0026_conversation_feedback.py",
+      "classification": "database migrations",
+      "authority": "January immutable migration history; all 26 retained",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/README.md",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/ambient.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/bootstrap.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/commands.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/context.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/conversation.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/governance_export.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/ingress.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/knowledge.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/memory.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/model_provider.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/observability/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/observability/alerts.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/observability/content_safety.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/observability/incidents.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/observability/slis.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/observability/slos.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/outbound.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/personality.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/planning_service.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/ports/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/ports/concurrency.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/ports/media.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/ports/outbound.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/ports/persistence.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/ports/platform.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/ports/provider_governance.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/ports/rate_limit.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/ports/telemetry.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/ports/text_to_speech.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/presence.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/prompting.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/provider_governance.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/rate_limit_rules.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/rate_limiting.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/reactions.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/regeneration.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/response_plan.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/safety.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/scheduling.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/semantic_memory.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/summary.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/telegram_text.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/application/telemetry.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/core/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/core/config.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/core/logging.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/core/request_context.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/core/telemetry_context.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/ambient.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/conversation.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/feedback.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/governance.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/knowledge.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/media.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/outbound.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/persistence.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/planning.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/provider_governance.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/rate_limit.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/reactions.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/recovery.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/safety.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/scheduling.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/summary.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/tenancy.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/domain/voice.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/evaluation/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/evaluation/evaluators.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/evaluation/fixtures.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/evaluation/gates.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/evaluation/models.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/evaluation/reporting.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/evaluation/runner.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/evaluation/scoring.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/concurrency.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/concurrency_provider.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/base.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/bootstrap.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/commands.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/context.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/conversation.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/database.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/deployment_authority.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/feedback.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/governance.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/group_configuration.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/ingress.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/knowledge.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/media.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/memory.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/models.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/outbound.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/personality.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/planning.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/privacy.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/provider_governance.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/reactions.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/recovery.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/regeneration.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/repositories.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/retention.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/safety.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/safety_protection.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/scheduling.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/semantic_memory.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/summaries.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/tenancy.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/database/voice.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/governed_provider.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/knowledge.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/model_providers.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/queue/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/queue/redis_streams.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/rate_limit.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/semantic_memory.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/telegram/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/telegram/adapter.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/telegram/assets.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/telegram/commands.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/telegram/media.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/telegram/media_download.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/telegram/normalizer.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/telegram/rendering.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/telegram/updates.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/telemetry.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/infrastructure/text_to_speech.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/interface/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/interface/http/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/interface/http/control_plane.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/interface/http/dependencies.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/interface/http/knowledge_control.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/interface/http/middleware.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/interface/http/models.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/interface/http/provider_governance_control.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/interface/http/routes.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/main.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/__init__.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/acceptance_evidence.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/ai_evaluations.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/conversation_summary_worker.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/conversation_worker.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/demo_chat_discovery.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/demo_inspector.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/governance_worker.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/group_configuration.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/ingress_outbox_dispatcher.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/knowledge_index_worker.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/knowledge_operations.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/lifecycle.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/operations.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/operator_bootstrap.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/outbound_delivery_worker.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/outbound_recovery.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/proactive_scheduler_worker.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/provider_governance_worker.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/response_planning_worker.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/retention_worker.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/semantic_memory_index_worker.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/semantic_memory_operations.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/telegram_command_worker.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/telegram_connection_operations.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/telegram_media.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/app/runtime/telegram_poller.py",
+      "classification": "January application source",
+      "authority": "Owner independent-development declaration; review actual source, not Git authorship",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/__init__.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/conftest.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/fixtures/self_host_http.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/__init__.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_command_schema.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_conversation_feedback.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_conversation_ordering.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_conversation_summaries.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_demo_bootstrap.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_governance_schema.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_ingress.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_knowledge_rag.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_memory_schema.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_multi_tenant_model.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_operational_recovery.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_outbound_delivery.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_persistence.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_personal_context_schema.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_personality_configuration.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_provider_governance_schema.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_redis_concurrency.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_safety_recheck.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_safety_schema.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_scalability.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_scheduling_schema.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_self_host_runtime.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_self_host_setup.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_telegram_conversation_ux.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_telegram_media_schema.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_telegram_media_worker.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_telegram_presence_worker.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_telegram_reactions_worker.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_telegram_regeneration.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/integration/test_telegram_voice_tts.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_acceptance_evidence.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_ai_evaluations.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_ambient.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_application.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_concurrency.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_config.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_conversation_context.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_conversation_eligibility.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_conversation_normalizer.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_dependency_security.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_graphify_integration.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_http.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_ingress_queue.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_knowledge.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_lifecycle.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_media_model_providers.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_media_persistence.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_media_provider_governance.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_memory.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_model_providers.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_observability.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_observability_alerts.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_observability_slos.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_outbound.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_personal_context.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_personality.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_planning_service.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_proactive_scheduler_worker.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_production_promotion_tools.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_provider_governance.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_public_history.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_public_release.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_response_plan.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_safety.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_safety_moderation.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_scheduling.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_self_host_distribution.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_self_host_doctor.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_self_host_http.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_self_host_runtime.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_self_host_setup.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_semantic_memory.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_summary.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_telegram_adapter.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_telegram_commands.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_telegram_connection_operations.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_telegram_media.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_telegram_media_download.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_telegram_media_runtime.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_telegram_presence.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_telegram_reactions.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_telegram_regeneration.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_telegram_updates.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "backend/tests/test_text_to_speech.py",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "compose.self-host.yaml",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "compose.staging.yaml",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "compose.yaml",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/HARNESS.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/README.md",
+      "classification": "mixed upstream and January maintainer documentation",
+      "authority": "Harness-derived portions retain upstream MIT; January adaptations under project MIT",
+      "mode": "100644",
+      "upstream_sha256": "89974a19e4ff3fe833ff764ad252a7756580be55bf489dc5ba68d7f71e316e65",
+      "matches_upstream_manifest": false,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/WORKFLOW.md",
+      "classification": "mixed upstream and January maintainer documentation",
+      "authority": "Harness-derived portions retain upstream MIT; January adaptations under project MIT",
+      "mode": "100644",
+      "upstream_sha256": "08ccd7a062d38a566b6f24631a501ba848e64ac31c6fcdb3b03e1abe2de313e8",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0001-backend-bootstrap-boundaries.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0002-postgresql-persistence-foundation.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0003-telegram-http-adapter.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0004-telegram-durable-ingress.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0005-conversation-processing-ledger.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0006-provider-planning.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0007-outbound-delivery-ambiguity.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0008-operator-demo-boundary.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0009-immutable-personality-snapshots.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0010-telegram-command-jobs-and-fresh-authorization.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0011-explicit-memory-and-physical-redaction.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0012-safety-policy-and-distributed-rate-limiting.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0013-zalo-feasibility-verification-gate.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0014-operational-telemetry-boundary.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0015-operational-recovery-and-provider-concurrency.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0016-conversation-summary-retention-boundary.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0017-explicit-memory-semantic-index.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0018-production-runtime-operations.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0019-slo-and-alert-evaluation-model.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0020-incident-and-error-budget-state-representability.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0021-safety-moderation-protection-state-and-review-queue.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0022-data-governance-export-erasure-and-audit.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0023-provider-governance-attempt-and-reservation-boundary.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0024-user-controlled-personal-context-and-recall.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0025-ephemeral-telegram-media-and-derived-transcripts.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0026-durable-private-schedules-and-outbox-participation.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0027-canonical-tenant-assistant-authority.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0028-offline-hard-gate-ai-evaluation.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/0029-postgresql-authoritative-knowledge-rag.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/decisions/README.md",
+      "classification": "mixed upstream and January maintainer documentation",
+      "authority": "Harness-derived portions retain upstream MIT; January adaptations under project MIT",
+      "mode": "100644",
+      "upstream_sha256": "521abd46ee1291dfe13a500664f6046723c0f8360728501da434c0292ed92b2b",
+      "matches_upstream_manifest": false,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/examples/self-host-provider-policy.json",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/maintainers/dependency-licenses.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/maintainers/first-public-publication.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/maintainers/github-release-checklist.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/maintainers/graphify.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/maintainers/post-publication-source-release.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "proposed regular source file"
+    },
+    {
+      "path": "docs/maintainers/public-history-review.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/maintainers/release-notes-template.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/maintainers/release-process.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/README.md",
+      "classification": "mixed upstream and January maintainer documentation",
+      "authority": "Harness-derived portions retain upstream MIT; January adaptations under project MIT",
+      "mode": "100644",
+      "upstream_sha256": "99a8461fc62f09c966c2c4c5bd2b62ea32cda1e18f8d70f7c939b5dd4b2c68e5",
+      "matches_upstream_manifest": false,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/active/OSS-001-january-source-release.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "proposed regular source file"
+    },
+    {
+      "path": "docs/plans/active/README.md",
+      "classification": "mixed upstream and January maintainer documentation",
+      "authority": "Harness-derived portions retain upstream MIT; January adaptations under project MIT",
+      "mode": "100644",
+      "upstream_sha256": "aec64998a72585b2a9c4c8909c7ed775c396c4c2e39c71b0ce4ee6e392784160",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/active/dependency-security-stabilization.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/completed/README.md",
+      "classification": "mixed upstream and January maintainer documentation",
+      "authority": "Harness-derived portions retain upstream MIT; January adaptations under project MIT",
+      "mode": "100644",
+      "upstream_sha256": "1ba887f4fb54b7aa45e3f4f619d4b2dfa1eb63d52c09fbbd9588598862346dc7",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/completed/SPEC-048-clean-public-snapshot.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-020-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-023-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-024-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-025-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-026-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-027-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-028-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-029-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-030-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-032-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-033-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-034-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-035-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-036-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-037-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-038-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-039-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-040-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-041-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-042-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-043-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-044-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-045-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-046-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-047-DESIGN-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/plans/handoff/SPEC-048-HANDOFF.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/platforms/zalo/capability-matrix.yaml",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/platforms/zalo/decision.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/platforms/zalo/official-source-register.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/platforms/zalo/official-sources.yaml",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/platforms/zalo/operator-verification-plan.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/platforms/zalo/operator-verification-report.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/platforms/zalo/operator-verification-results.yaml",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/platforms/zalo/redaction-policy.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/platforms/zalo/telegram-parity-analysis.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/README.md",
+      "classification": "mixed upstream and January maintainer documentation",
+      "authority": "Harness-derived portions retain upstream MIT; January adaptations under project MIT",
+      "mode": "100644",
+      "upstream_sha256": "8d1834591efccd4267f475905d32d26d9ba3a6c9d78acf2805bf69af48cb6c01",
+      "matches_upstream_manifest": false,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/SPEC.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/compliance-posture.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/data-governance.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/encryption-ownership.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/self-hosted-deployment-profile.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-002-database-and-persistence.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-003-telegram-platform-adapter.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-004-telegram-ingress-queue-idempotency.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-005-conversation-domain-and-context.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-006-llm-provider-and-response-planning.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-007-outbound-actions-delivery-idempotency.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-008-operator-bootstrap-end-to-end-demo.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-009-personality-profiles-and-group-configuration.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-010-telegram-administration-commands-and-user-preferences.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-011-explicit-memory-privacy-retention.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-012-safety-policy-and-distributed-rate-limiting.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-013-zalo-feasibility-spike-and-capability-matrix.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-014-zalo-operator-verification-gate.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-015-telegram-observability-and-operational-telemetry.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-016-telegram-operational-reliability-recovery-and-scale.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-017-telegram-ambient-selective-participation.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-018-telegram-conversation-summaries-and-context-compression.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-019-explicit-memory-semantic-retrieval-and-qdrant.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-020-production-deployment-secrets-and-runtime-operations.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-021-authenticated-operator-and-group-administration-control-plane.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-022-telegram-production-integration-and-live-acceptance.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-023-production-observability-slos-alerting-and-incident-operations.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-024-safety-moderation-abuse-prevention-and-user-protection.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-025-data-governance-encryption-export-and-deletion-compliance.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-026-provider-routing-cost-budgets-and-usage-governance.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-027-user-controlled-memory-and-personal-context.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-028-rich-telegram-media-and-voice-interactions.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-029-proactive-scheduling-and-durable-social-participation.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-030-multi-assistant-multi-tenant-product-model.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-032-ai-evaluation-conversation-quality-framework.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-033-telegram-knowledge-base-rag.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-034-telegram-reply-context-ordered-delivery.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-035-telegram-presence-response-feedback.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-036-telegram-response-editing-regeneration.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-037-telegram-reactions-lightweight-social-feedback.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-038-telegram-explicit-voice-tts.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-039-explicit-conversation-feedback-quality-signals.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-040-production-stabilization-global-ci-recovery.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-041-telegram-first-release-readiness-production-acceptance.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-042-production-promotion-live-acceptance.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-043-open-source-self-hosted-distribution-first-run.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-044-public-open-source-release-maintainer-baseline.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-045-maintainer-knowledge-graph-codebase-navigation.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-046-open-source-readme-january-brand-consolidation.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-047-first-public-release-publication-gate.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/specs/SPEC-048-clean-public-snapshot.md",
+      "classification": "historical evidence",
+      "authority": "Historical product/research/handoff records; no current release/audit approval",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/product/telegram-capabilities.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/releases/first-public-release-candidate.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/ai-evaluations.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/alerting.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/ambient-participation.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/backup-restore.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/conversation-feedback.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/conversation-summaries.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/deployment.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/group-configuration.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/incident-operations.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/knowledge-base-rag.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/live-acceptance.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/local-development.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/multi-tenant-administration.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/observability.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/personal-context.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/proactive-scheduling.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/production-operations.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/production-promotion-checklist.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/production-promotion.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/production-stabilization.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/provider-routing-and-budgets.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/recovery.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/safety-rate-limiting.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/self-hosted-quickstart.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/self-hosted-troubleshooting.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/self-hosted-upgrades.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/self-hosted-vps.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/semantic-memory.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/slos-alerting.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/telegram-administration-commands.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/telegram-conversation-ux.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/telegram-end-to-end-demo.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/telegram-first-release-checklist.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/telegram-first-release-readiness.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/telegram-media.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/telegram-presence.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/telegram-reactions.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/telegram-regeneration.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/runbooks/telegram-voice-tts.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/templates/decision.md",
+      "classification": "mixed upstream and January maintainer documentation",
+      "authority": "Harness-derived portions retain upstream MIT; January adaptations under project MIT",
+      "mode": "100644",
+      "upstream_sha256": "e92ba7a5b7bc10ce6c213af75a191619fc305c3945cdd55d4dc6bac72dcd42c1",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/templates/exec-plan.md",
+      "classification": "mixed upstream and January maintainer documentation",
+      "authority": "Harness-derived portions retain upstream MIT; January adaptations under project MIT",
+      "mode": "100644",
+      "upstream_sha256": "111c40ea8ab63a03561fdb54f235358546788b3a4e1bb26f220da8db50db92b9",
+      "matches_upstream_manifest": true,
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/templates/incident-evidence.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/templates/post-incident-review.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "docs/validation/OSS-001-acceptance.md",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "proposed regular source file"
+    },
+    {
+      "path": "docs/validation/OSS-001-container-inventory.json",
+      "classification": "product and maintainer documentation",
+      "authority": "Engineering inventory of separately licensed third-party container components; not January runtime source ownership or image approval",
+      "mode": "100644",
+      "mode_basis": "proposed regular source file"
+    },
+    {
+      "path": "docs/validation/OSS-001-python-licenses.json",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "proposed regular source file"
+    },
+    {
+      "path": "docs/validation/OSS-001-python-sbom.cdx.json",
+      "classification": "product and maintainer documentation",
+      "authority": "January documentation; upstream copied portions remain scoped by NOTICE",
+      "mode": "100644",
+      "mode_basis": "proposed regular source file"
+    },
+    {
+      "path": "docs/validation/OSS-001-source-classifications.json",
+      "classification": "product and maintainer documentation",
+      "authority": "Generated classification inventory; source candidate hashes are kept in a separate non-recursive manifest",
+      "mode": "100644",
+      "mode_basis": "proposed regular source file"
+    },
+    {
+      "path": "evals/fixtures/telegram-core-v1.json",
+      "classification": "tests and synthetic fixtures",
+      "authority": "January tests; synthetic provenance assertions; not user conversations",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "pyproject.toml",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/dev/graphify.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/graphify/validate.py",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/january-demo.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/lib/db-ready.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/lib/resolve-uv.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/lib/self-host-env.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/lib/source-files.py",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/lib/source-files.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/production-config-fingerprint.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/public_release/audit_history.py",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/public_release/validate.py",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/self-host-compose.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/self-host-doctor.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/self_host/runtime.py",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/self_host/self_host_config.py",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/self_host/setup_operator.py",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/self_host/validate_distribution.py",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/telegram-webhook.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/test-resolve-uv.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-ai-evals.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-ambient.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-backup-restore.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-commands.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-conversation-feedback.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-conversation.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-db.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-delivery.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-demo.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-deployment.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-governance.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-graphify-integration.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-ingress.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-knowledge-rag.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-live-acceptance.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-memory.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-multi-tenancy.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-observability.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-personal-context.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-personality.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-planning.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-proactive-scheduling.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-production-readiness.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-provider-governance.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-public-release.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-reliability.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-safety.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-scalability.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-self-hosted.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-semantic-memory.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-summaries.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-telegram-conversation-ux.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-telegram-media.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-telegram-presence.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-telegram-reactions.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-telegram-regeneration.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-telegram-voice-tts.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-zalo-feasibility.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate-zalo-verification.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/validate.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/verify-model-provider.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/verify-telegram-delivery.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "scripts/verify-telegram.sh",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100755",
+      "mode_basis": "recorded Git index"
+    },
+    {
+      "path": "uv.lock",
+      "classification": "development and maintainer tools / distribution configuration",
+      "authority": "January source tools/configuration; referenced external dependencies are separately licensed",
+      "mode": "100644",
+      "mode_basis": "recorded Git index"
+    }
+  ]
+}

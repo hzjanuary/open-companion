@@ -8,10 +8,9 @@ operator. You are the operator; safety, privacy, authority and finite provider
 budgets still apply.
 
 Source notice: use a reviewed checkout or GitHub-style source archive containing
-this guide, `compose.self-host.yaml` and the self-host scripts. SPEC-043 is
-committed; SPEC-044 release work is a candidate, not a published tag. Repository
-access and later publication remain owner-controlled. A downloaded archive
-needs no Git history for the Docker path; retain its exact source identity.
+this guide, `compose.self-host.yaml` and the self-host scripts. The repository is
+already public; v0.1.0 remains untagged and unpublished. A downloaded source
+archive needs no Git history for the Docker path; retain its exact source identity.
 
 License: [MIT](../../LICENSE), selected during SPEC-044. See
 [CHANGELOG](../../CHANGELOG.md) for changes and the
@@ -19,7 +18,7 @@ License: [MIT](../../LICENSE), selected during SPEC-044. See
 
 ## 1. Obtain the checkout and tools
 
-With repository access (or after the owner makes it public), the clone route is:
+Clone the existing public repository:
 
 ```bash
 git clone https://github.com/hzjanuary/open-companion.git

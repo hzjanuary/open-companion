@@ -19,7 +19,9 @@ import httpx
 import pytest
 
 ROOT = Path(__file__).resolve().parents[3]
-IMAGE = "january-self-host:spec043-development"
+IMAGE = os.environ.get(
+    "JANUARY_SELF_HOST_TEST_IMAGE", "january-self-host:spec043-development"
+)
 TOKEN = "999999999:closed_spec043_bot_token"
 KEY = "CLOSED-SPEC043-PROVIDER-CANARY"
 WEBHOOK_SECRET = "CLOSED-SPEC043-WEBHOOK-CANARY"
