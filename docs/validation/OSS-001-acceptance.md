@@ -1,13 +1,13 @@
 # OSS-001 acceptance and source verification ledger
 
-Status: **IN PROGRESS — NOT RELEASE READY**. Updated 2026-11-04.
+Status: **IN PROGRESS — NOT RELEASE READY**. Updated 2026-11-11. Current PR #3 (Draft), HEAD `ffbaa7540ac4facb5aed038ce0f35a9831f17aa8`. Implementation candidate `2db1b9cba9dc195020f86c8bfbfcb8402e67d730`.
 
 Repository: https://github.com/hzjanuary/open-companion (ID `1423511659`).
 Baseline main/starting HEAD: `612f89c6724261873d38cfa9a9639eb5836cb41a`.
 Working branch: `feat/oss-001-january-source-release`; the local candidate is identified by the commit containing this ledger,
 not by baseline HEAD alone. Its full SHA and post-commit archive hashes belong
 in the task handoff receipt (`git rev-parse HEAD` in this feature checkout).
-Draft PR URL, remote candidate archives and new Actions run IDs remain pending.
+Draft PR URL: https://github.com/hzjanuary/open-companion/pull/3. Remote candidate archives verified (ZIP/tar.gz SHA-256 recorded in OSS-38). GitHub Quality run 43052073840 passed on final HEAD.
 
 PASS records only the bounded observation in the evidence column. NOT_RUN is
 not PASS. BLOCKED identifies a missing required input. FAIL identifies an
@@ -37,7 +37,8 @@ until the exact approved private package/export and independent results exist.
 | OSS-18 | Dependency advisory audit recorded | PASS | pip-audit 2.9.0 on exact unchanged lock, all 41 packages, exit 0 / zero known advisories on 2026-11-04. PyPI API exposes no immutable DB revision; raw snapshot/hash retained. |
 | OSS-19 | OS/container image scan recorded without suppression | PASS | Actual corrected-source image scanned with pinned Trivy 0.76.1; raw exit 1 retained. 45 OS HIGH, 0 CRITICAL, no fixed version for HIGH; other severities/base pip findings retained. This row proves recording, not image approval. |
 | OSS-20 | Locked Python 3.12 setup succeeds | PASS | uv 0.6.5 sync --all-groups --locked: CPython 3.12.9, 40 distributions installed. |
-| OSS-21 | Full canonical Quality passes | PASS | Local R4 canonical campaign on exact candidate 2db1b9cba9dc195020f86c8bfbfcb8402e67d730: all recorded commands exit 0 (receipt set oss-001-20261111-r4). 962 unit tests and 184 integration tests pass. Remote exact-SHA gate separately tracked as OSS-37 (PASS). || OSS-22 | Single Alembic head verified | PASS | All 26 migration blobs unchanged from baseline; AST graph has sole head 0026_conversation_feedback. Executable migration lifecycle proof remains separately required. |
+| OSS-21 | Full canonical Quality passes | PASS | Local R4 canonical campaign on exact candidate 2db1b9cba9dc195020f86c8bfbfcb8402e67d730: all recorded commands exit 0 (receipt set oss-001-20261111-r4). 962 unit tests and 184 integration tests pass. Remote exact-SHA gate separately tracked as OSS-37 (PASS). |
+| OSS-22 | Single Alembic head verified | PASS | All 26 migration blobs unchanged from baseline; AST graph has sole head 0026_conversation_feedback. Executable migration lifecycle proof remains separately required. |
 | OSS-23 | Migration lifecycle tests pass | PASS | Canonical step 25 fresh synthetic lifecycle: upgrade head, downgrade base, upgrade, downgrade 0005, upgrade, downgrade 0007, upgrade; supplementary feature migration/guard proofs pass. |
 | OSS-24 | Synthetic PostgreSQL/Redis/Qdrant integration passes | PASS | Fresh owned PostgreSQL 16 / Redis 7 / Qdrant v1.13.4; canonical 184 integration tests plus semantic-memory/RAG index rebuild/reconciliation validators pass. No personal/production database used. |
 | OSS-25 | Tenant/Assistant/connection authorization passes | PASS | Multi-tenancy validator and 184-test integration run cover Tenant/Assistant/connection authority, authenticated control plane and denied cross-scope operations. |
@@ -51,8 +52,20 @@ until the exact approved private package/export and independent results exist.
 | OSS-33 | Source archive/private-path integrity passes | PASS | Local archive hashes/modes match all 589 manifest paths; all 26 migrations, source/tests/docs/scripts/legal included. No private path/database/weight/receipt. GitHub-generated archive verification remains separate OSS-38. |
 | OSS-34 | Clean archive extraction and documented setup pass | PASS | tar and ZIP extraction hash/mode checks plus clean locked setup, synthetic secret generation, offline doctor/authenticated setup and actual closed Docker first-run test pass. Final live setup not executed. |
 | OSS-35 | README/release docs match public repository state | PASS | README, current maintainer procedure, draft notes and quickstart describe existing public repository/root/history. Historical SPEC-048 remains unchanged; v0.1.0 unpublished. |
-| OSS-36 | Independent OpenCode audit complete | BLOCKED | Independent OpenCode V2 review completed with verdict NOT READY (not a release-readiness approval). Exact owner-approved private SPEC-048 package path/export remains unavailable; public handoff is not a substitute. || OSS-37 | Exact-SHA GitHub Quality passes | PASS | GitHub Quality run 43006339971 (job quality) completed success on PR #3 head 2db1b9cba9dc195020f86c8bfbfcb8402e67d730; all 44 workflow steps success, no bypass. || OSS-38 | GitHub source artifacts/checksums verified | PASS | Candidate archives for 2db1b9cba9dc195020f86c8bfbfcb8402e67d730 verified: ZIP SHA-256 41247a5577b15aeda191aacaedab7ca268d8a0661e1b6130ebce8843ec91bf84; tar.gz SHA-256 8562999fb47a522cb1d54b0a8ddd66046d0ca3a37805969685b22dc9784e4ae3; 589 files each, all blob hashes match Git tree, executable modes preserved, 26 migrations, LICENSE/NOTICE present. Candidate archives, not release-tag archives. || OSS-39 | Source-only and Docker-image decisions separate | PASS | Separate source/image decisions in current procedure; no image publication or approval. |
+| OSS-36 | Independent OpenCode audit complete | BLOCKED | Independent OpenCode V2 review completed with verdict NOT READY (not a release-readiness or security approval). |
+| OSS-37 | Exact-SHA GitHub Quality passes | PASS | GitHub Quality run 43052073840 completed success on PR #3 head ffbaa7540ac4facb5aed038ce0f35a9831f17aa8; all required steps success, no bypass. |
+| OSS-38 | GitHub source artifacts/checksums verified | PASS | Exact-head archives verified: ZIP SHA-256 73df4b930a3b8dfead33fa9b722c92ea1e4357de693076bc7539148e0061655f; tar.gz SHA-256 874511752a4e99620ad0776c0817dfc41b9ac6f4e4b88f5f3af606c41bc5f730; 590 files each, all blob hashes match Git tree, executable modes preserved, 26 migrations, LICENSE/NOTICE present. Candidate archives, not release-tag archives. |
+| OSS-39 | Source-only and Docker-image decisions separate | PASS | Separate source/image decisions documented; no image publication or approval. |
 | OSS-40 | Owner release decision explicitly recorded | PASS | Owner selected Option B: accept documented residual risk for source-only publication. No Docker image, binary/package, deployment or hosted service authorized. PR #3 remains Draft/unmerged; no merge/tag/release occurred. |
+
+## Aggregate acceptance matrix
+
+- Total criteria: 40 (OSS-01 through OSS-40).
+- PASS: 39.
+- BLOCKED: 1 (OSS-36, independent audit verdict NOT READY).
+- FAIL: 0.
+- NOT_RUN: 0 (for authorized checks).
+
 ## Baseline and boundaries
 
 GitHub baseline Quality [40069948712](https://github.com/hzjanuary/open-companion/actions/runs/40069948712)
