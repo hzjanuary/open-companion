@@ -65,10 +65,14 @@ Ngày: 2026-11-11. Candidate SHA: `2db1b9cba9dc195020f86c8bfbfcb8402e67d730` (sa
 - Chủ sở hữu có thể chấp nhận? Có thể.
 - Phải công bố: source-only, no image.
 
-## Ba quyết định của chủ sở hữu
+## Quyết định của chủ sở hữu
 
-A. Tiếp tục chặn publication source-only.
-B. Chấp nhận rủi ro còn lại đã tài liệu hóa cho source-only publication, không có Docker image.
-C. Yêu cầu remediation/review thêm.
+**SELECTED: B — ACCEPT DOCUMENTED RESIDUAL RISK FOR SOURCE-ONLY PUBLICATION.**
 
-(Không tự chọn; chờ chủ sở hữu.)
+NOT AUTHORIZED:
+- Docker image publication.
+- Binary/package publication.
+- Deployment.
+- Hosted service.
+
+Quyết định này không thay đổi disposition kỹ thuật của bất kỳ finding nào. Nó chấp nhận rủi ro còn lại đã tài liệu hóa cho source-only distribution, với điều kiện disclosure đầy đủ và không có image.

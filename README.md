@@ -2,9 +2,15 @@
 
 Self-hosted social AI companion for Telegram.
 
-**v0.1.0 — NOT YET PUBLISHED.** This source snapshot awaits independent
-review. No release tag or official prebuilt image exists from this work. The
-public repository is [hzjanuary/open-companion](https://github.com/hzjanuary/open-companion).
+**v0.1.0 source-only preview (not released).** The owner has accepted
+documented residual risks for source-only distribution (Option B). Independent
+OpenCode Audit V2 completed with verdict NOT READY; this is not an independent
+security certification. No official prebuilt Docker image, binary or hosted
+service is approved. Source distribution and Docker image approval are separate
+decisions. PR #3 remains Draft and unmerged. Residual risks:
+[OSS-001 residual-risk register](docs/validation/OSS-001-residual-risk-decision-register.md)
+(200 unresolved private-history findings, 17 unresolved exclusion mappings,
+three protected unread conversation/memory records, SI-001 unknown impact).
 
 [Quality workflow](.github/workflows/ci.yml)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](pyproject.toml)

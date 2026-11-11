@@ -4,9 +4,10 @@ Date: 2026-11-01
 
 ## Status
 
-Active. Independent OpenCode audit BLOCKED pending the exact owner-approved
-private SPEC-048 package path or export. Do not substitute public historical
-documents. The owner explicitly permits other authorized offline work meanwhile.
+Active. Owner selected Option B: accept documented residual risk for source-only
+publication. Independent OpenCode audit V2 completed with verdict NOT READY
+(not a release-readiness approval). Candidate implementation SHA:
+2db1b9cba9dc195020f86c8bfbfcb8402e67d730. Draft PR #3 remains open.
 
 ## Outcome
 
@@ -95,11 +96,12 @@ SHA remote Quality. Preserve all 26 migrations and architecture.
 - [x] Final runtime/image proof: source-final manifest binds 962 general and
   31 affected tests, stock rebuild/Trivy and actual closed first-run PASS.
   Image findings remain 45 HIGH / 0 CRITICAL, publication not approved.
-- [ ] Check final publication privacy receipts, preserve local candidate commit
-  and post-commit full-history review in handoff. No push while audit is blocked.
-- [ ] Independent approved-package audit (BLOCKED).
-- [ ] Privacy-approved push, one Draft PR, exact-SHA remote Quality.
-- [ ] Vietnamese final handoff and owner release decision (pending).
+- [x] R4 local Quality: 47+ canonical commands exit 0 on candidate 2db1b9cba9dc195020f86c8bfbfcb8402e67d730.
+- [x] GitHub Quality run 43016672193 PASS on PR HEAD 55bb8e9e1bc2d3d9a7ce1301383da51ddfd39122.
+- [x] Owner Option B: accept documented residual risk for source-only publication.
+- [x] Draft PR #3: https://github.com/hzjanuary/open-companion/pull/3
+- [ ] Exact-head candidate archive verification (ZIP/tar) pending after final doc commit.
+- [ ] Owner final merge decision.
 
 ## Decisions
 
