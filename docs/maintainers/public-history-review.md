@@ -39,7 +39,18 @@ checkout paths only, `owner-consent-required`. They never remove the automatic
 detection. A changed object requires new review; stale IDs fail. Do not publish
 raw values in reasons. No path-wide or token-family allowlist is installed.
 
-## VCS-free source and future public history
+## Remote inventory before local coverage claims
+
+The scanner deliberately does not fetch. First inventory every advertised ref
+of the approved public repository with `git ls-remote origin`, including PR
+heads, not just branch heads and tags. Fetch missing approved public refs into
+audit-only local aliases without force-updating main/tags or importing another
+repository. Then scan HEAD and all local refs. Record both the advertised ref
+inventory and the fetched coverage. A heads/tags-only fetch does not establish
+coverage of retained GitHub PR heads. Unadvertised/unreachable server objects
+remain an explicitly separate surface.
+
+## Archives and existing public history
 
 SPEC-048 stages no .git directory and initializes no repository. Running this
 tool on the source archive must report COVERAGE_INCOMPLETE and exit 2: expected
@@ -50,9 +61,16 @@ Synthetic tests create disposable repositories outside the final snapshot with
 synthetic metadata and attack content. Those isolated test commits contain no
 original history and are not publication actions. Preserve coverage assertions.
 
-After independent audit and separately authorized owner creation of a NEW root
-commit, audit all new public refs and metadata. Retrieve the exact GitHub
-noreply address from Settings, verify author AND committer, and review current
-source. Do not import private history or assume owner consent to exposure.
+The repository is now public with original parentless root
+`069642473d6a39824b7a5ccf9c844cb8e6c4f354`. Preserve all existing history;
+never create another root or import the former private repository. Recheck all
+current refs and metadata before each source release, including deleted blobs.
+Root author and committer use the observed GitHub noreply identity. The owner
+acknowledged the existing merge author's personal metadata on 2026-11-01;
+do not repeat its address in reports or rewrite history. Use the observed owner
+noreply identity for new feature commits. GitHub merge committer metadata is
+reviewed separately from owner author metadata.
+
+See the [current source-release procedure](post-publication-source-release.md).
 Unreachable/unfetched objects, GitHub issues/logs/artifacts and external systems
-remain separate review surfaces.
+remain separate review surfaces. Independent audit remains a separate gate.

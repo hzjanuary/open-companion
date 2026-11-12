@@ -6,7 +6,16 @@ and release notes. No historical release versions or dates are implied here.
 
 ## Unreleased
 
-No additional changes are assigned after the proposed first snapshot.
+- Correct official MIT copyright to Hoang Nguyen; preserve installed Harness
+  notices and distinguish third-party licenses from the January grant.
+- Reconcile current release instructions with the existing public repository,
+  root and protected main; retain historical SPEC-048 records unchanged.
+- Enable and verify GitHub Private Vulnerability Reporting with owner approval.
+- Enforce the raw-content cutoff for stalled messages, outbound actions and
+  command arguments; fence expired leases, preserve uncertain delivery and
+  prevent late edits from restoring redacted content. No schema change.
+- Prepare OSS-001 source-only acceptance and provenance/security evidence;
+  independent audit and final owner release authorization remain pending.
 
 ## v0.1.0 — NOT YET PUBLISHED
 

@@ -7,9 +7,9 @@ product intentionally does not provide.
 
 | Surface | Owner | Product guarantee | Not provided |
 | --- | --- | --- | --- |
-| In transit | Operating owner provides TLS/HTTPS; product requires it | Webhook requires HTTPS; secrets never sent in cleartext by the product | — |
-| At rest — database and volumes | Operating owner (storage/volume encryption) | Product persists no plaintext secrets at rest | Application-level field encryption |
-| At rest — secrets | Product | Secrets injected at the process boundary, never persisted in the database, logs, or audit, never logged | — |
+| In transit | Operating owner provides TLS/HTTPS and network access restrictions | Public webhook URL requires HTTPS; production configuration requires HTTPS for Telegram and enabled hosted providers | Automatic TLS termination or encryption of every local/internal connection |
+| At rest — database and volumes | Operating owner (storage/volume encryption) | Credentials are not application database fields; conversation and memory content is stored without field encryption | Application-level field encryption |
+| At rest — secrets | Operating owner protects private configuration files; product consumes injected secrets | Secrets are not persisted in application database, logs or audit | Encryption of operator env files or automatic key management |
 | Derived index (Qdrant) | Product | Privacy-sensitive vectors plus opaque internal scope identifiers; rebuildable from authorized explicit facts | Memory text and personal-context records are never stored in the index |
 | Personal context and recall | Product schema; operating-owner storage encryption | Creator-private exact-conversation scope, physical content clearing, content-free recall authority | Application-level field encryption or cross-conversation identity |
 | Backups | Operating owner | Backup procedure mandates encryption | — |
@@ -23,3 +23,11 @@ through the documented procedure.
 
 Application-level field encryption is explicitly future work, not a current
 guarantee.
+
+Self-hosted operator env files contain plaintext credentials and require private
+permissions and owner-managed storage/backup encryption. January does not encrypt
+these files. The owner provides certificates, TLS termination, storage and volume
+encryption, encrypted backups, key management, restricted network/admin access
+and backup retention. Local HTTP services and local Ollama are not automatically
+TLS-protected. Telegram remains external with any model choice. January provides
+neither application-level field encryption nor end-to-end encryption.

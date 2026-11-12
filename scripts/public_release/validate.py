@@ -2,6 +2,7 @@
 
 import argparse
 import hashlib
+import json
 import re
 import stat
 import sys
@@ -11,7 +12,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[2]
 # Standard MIT text, independently reviewed against OSI; only owner/year filled.
-LICENSE_SHA256 = "4683b02a857c61e9e9130299624b7f2bc7861c262a4d780f67de110a4e0731d0"
+LICENSE_SHA256 = "4d7986336b20626e0f4b37bdcd8010f718856bdf0fecb11f40dfdd5f705d49e1"
 PUBLIC_DOCS = (
     "README.md",
     "CONTRIBUTING.md",
@@ -210,8 +211,51 @@ def direct_scripts(root: Path) -> set[str]:
     return set(re.findall(r"\./(scripts/[\w-]+\.sh)\b", workflow)) | set(USER_SCRIPTS)
 
 
+def validate_dependency_inventory(root: Path) -> None:
+    """Reject stale or incomplete lock inventories; no network or legal verdict."""
+    lock_bytes = (root / "uv.lock").read_bytes()
+    packages = tomllib.loads(lock_bytes.decode())["package"]
+    expected = {
+        (package["name"], package["version"])
+        for package in packages
+        if package["name"] != "january"
+    }
+    inventory = json.loads(
+        (root / "docs/validation/OSS-001-python-licenses.json").read_text()
+    )
+    require(
+        inventory["uv_lock_sha256"] == hashlib.sha256(lock_bytes).hexdigest(),
+        "Dependency license inventory must match the exact lock",
+    )
+    components = inventory["components"]
+    require(
+        len(components) == len(expected)
+        and {(row["name"], row["version"]) for row in components} == expected,
+        "Dependency license inventory must cover every locked third-party package",
+    )
+    require(
+        all(
+            row.get("license_expression")
+            or row.get("license_metadata")
+            or row.get("license_classifiers")
+            for row in components
+        ),
+        "Missing dependency license metadata requires review",
+    )
+    sbom = json.loads(
+        (root / "docs/validation/OSS-001-python-sbom.cdx.json").read_text()
+    )
+    require(
+        sbom["bomFormat"] == "CycloneDX"
+        and len(sbom["components"]) == len(expected)
+        and {(row["name"], row["version"]) for row in sbom["components"]} == expected,
+        "Dependency SBOM must cover the exact locked third-party packages",
+    )
+
+
 def validate(root: Path) -> None:
     root = root.resolve()
+    validate_dependency_inventory(root)
     for relative in PUBLIC_DOCS + SOURCE_FILES:
         path = root / relative
         require(
@@ -237,6 +281,11 @@ def validate(root: Path) -> None:
     )
     readme = (root / "README.md").read_text()
     validate_brand(root)
+    require(
+        "planned public repository" not in readme.lower()
+        and "once the owner publishes the repository" not in readme.lower(),
+        "README must describe the existing public repository",
+    )
     require(
         "## License\n\nLicensed under the [MIT License](LICENSE)" in readme,
         "README must declare and link MIT",
@@ -320,9 +369,16 @@ def main() -> int:
     args = parser.parse_args()
     try:
         validate(args.root)
-    except (ValueError, OSError, KeyError) as error:
+    except (ValueError, OSError, KeyError, TypeError) as error:
         # Only closed rule/path messages; never echo malformed file contents.
-        if isinstance(error, OSError | KeyError | tomllib.TOMLDecodeError):
+        if isinstance(
+            error,
+            OSError
+            | KeyError
+            | TypeError
+            | tomllib.TOMLDecodeError
+            | json.JSONDecodeError,
+        ):
             print(
                 "Public release validation failed: unreadable or malformed source",
                 file=sys.stderr,

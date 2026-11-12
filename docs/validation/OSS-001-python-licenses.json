@@ -1,0 +1,1161 @@
+{
+  "attribution_notes": {
+    "certifi": "MPL-2.0; Mozilla CA bundle terms remain separate from January MIT.",
+    "greenlet": "MIT AND PSF-2.0",
+    "packaging": "Apache-2.0 OR BSD-2-Clause",
+    "typing-extensions": "PSF-2.0",
+    "uvloop": "License metadata says MIT License, classifiers also include Apache. Retain shipped license files, including bundled libuv obligations; do not reduce this to a blanket MIT assertion."
+  },
+  "components": [
+    {
+      "dependencies": [
+        {
+          "name": "mako"
+        },
+        {
+          "name": "sqlalchemy"
+        },
+        {
+          "name": "typing-extensions"
+        }
+      ],
+      "license_classifiers": [],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "alembic-1.18.5.dist-info/licenses/LICENSE",
+          "sha256": "6e68d94a03a0e3e327ddf3e86d1ebedc14eece3922022618fc246a36296fd0cc"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "d7fd3308b0b854d58f6c3bddc2c8c8a841e13f45a90abeb02f5ebea70b008e09",
+      "name": "alembic",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:1554982221dd17e9a749b53902407578eb305e453f71999e8c7f0a48389fff8e",
+      "version": "1.18.5"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "annotated_doc-0.0.5.dist-info/licenses/LICENSE",
+          "sha256": "fff170779a6acbf65abdb405c087f1cee1786691e4a96a4034517e4a504a0cdf"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "8c24d70c5d9153d22123353a906042fd7603df2d15c2196290b0f8a962558c46",
+      "name": "annotated-doc",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:c7e58ce09192557605d8bbd92836d7e1d520ac9580096042c0bfd197efacf1bb",
+      "version": "0.0.5"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "annotated_types-0.8.0.dist-info/licenses/LICENSE",
+          "sha256": "fe1049884b1a0d9342901e88e07f32925d24b3121d9972b6a6805fb9824b095d"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "614985b278f601b8ef863f82783b991cc3ada4b89f592eb71c7c48c5f2ef2298",
+      "name": "annotated-types",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:13b2beaad985e05e2d6407ee4c4f35590b11f8d693a258a561055cac8f64cab7",
+      "version": "0.8.0"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "idna"
+        },
+        {
+          "name": "typing-extensions"
+        }
+      ],
+      "license_classifiers": [],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "anyio-4.14.2.dist-info/licenses/LICENSE",
+          "sha256": "5361ac9dc58f2ef5fd2e9b09c68297c17f04950909bbc8023bdb82eacf22c2b0"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "c5e6fc4dfd833319913b287be7a30d9935e9208c7ef917630621855aaac4d419",
+      "name": "anyio",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:cfa139f3ed1a23ee8f88a145ddb5ac7605b8bbfd8592baacd7ce3d8bb4313c7f",
+      "version": "4.14.2"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": "Apache-2.0",
+      "license_files": [
+        {
+          "file": "asyncpg-0.31.0.dist-info/licenses/LICENSE",
+          "sha256": "d9222d73fdac50992174076efa04f44f6fbcd9d56155a7c7092e98757042a6f6"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 8,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "ebfc2bcf10808d7f514c2a9cc6b2ad0055553446767d3c651dc6efa3ad8cd11f",
+      "name": "asyncpg",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:c989386c83940bfbd787180f2b1519415e2d3d6277a70d9d0f0145ac73500735",
+      "version": "0.31.0"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+      ],
+      "license_expression": null,
+      "license_files": [
+        {
+          "file": "certifi-2026.10.23.dist-info/licenses/LICENSE",
+          "sha256": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7"
+        }
+      ],
+      "license_metadata": "MPL-2.0",
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "e463e38f7fe7da36a11e6d3fecc5dfa5b97be8c8022620400750d79ae7d842bc",
+      "name": "certifi",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:a9895e6e2758b371e0545e321a3a8fd1fcfd9829ada8824a936dfb16aaaf36cd",
+      "version": "2026.10.23"
+    },
+    {
+      "dependencies": [
+        {
+          "marker": "sys_platform == 'win32'",
+          "name": "colorama"
+        }
+      ],
+      "license_classifiers": [],
+      "license_expression": "BSD-3-Clause",
+      "license_files": [
+        {
+          "file": "click-8.4.2.dist-info/licenses/LICENSE.txt",
+          "sha256": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "194c9dd81d567f9081f026c7e401060fbafa7bc147c8e0a58b3668b40a64c031",
+      "name": "click",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:9a6cea6e60b17ebe0a44c5cc636d94f09bd66142c1cd7d8b4cd731c4917a15f6",
+      "version": "8.4.2"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_expression": null,
+      "license_files": [
+        {
+          "file": "colorama-0.4.6.dist-info/licenses/LICENSE.txt",
+          "sha256": "cac35c02686e5d04a5a7140bfb3b36e73aed496656e891102e428886d7930318"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "uv.lock SHA-256-verified Windows-conditional wheel METADATA (not installed on Linux)",
+      "metadata_sha256": "7baed29eb50c3b29bdb33ff84e3177bf1bc05784f7685ecdcaa4471c7dd810cc",
+      "name": "colorama",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime",
+        "development"
+      ],
+      "sdist_sha256": "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44",
+      "version": "0.4.6"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "annotated-doc"
+        },
+        {
+          "name": "opentelemetry-api"
+        },
+        {
+          "name": "pydantic"
+        },
+        {
+          "name": "starlette"
+        },
+        {
+          "name": "typing-extensions"
+        },
+        {
+          "name": "typing-inspection"
+        }
+      ],
+      "license_classifiers": [],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "fastapi-0.151.0.dist-info/licenses/LICENSE",
+          "sha256": "4ec89ffc81485b97fec584b2d4a961032eeffe834453894fd9c1274906cc744e"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "b58ba798b2560a71a329e100fbfa15e718577f361ca00e2e5fd6d46b2cc46e3f",
+      "name": "fastapi",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:f5bd74323048882837f422b6592b11f84dda1754defc4545a4c570cfa19a7a41",
+      "version": "0.151.0"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": "MIT AND PSF-2.0",
+      "license_files": [
+        {
+          "file": "greenlet-3.5.4.dist-info/licenses/LICENSE",
+          "sha256": "769831d6e5dfaf2c20802faccff1fafb4c2025dd8f6253dfa47fcad59d4d0979"
+        },
+        {
+          "file": "greenlet-3.5.4.dist-info/licenses/LICENSE.PSF",
+          "sha256": "e5ff3c23c110e494cd7d736c10fd96d462457bafeca310840db6527298c7d46b"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 10,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "87ad56cd17d2e270392f937ea53309a653c65c39202efac1e2b9ab7820af9dd9",
+      "name": "greenlet",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:0232ae1de90a8e07867bb127d7a6ba2301e859145489f25cda8a6096dabe1d20",
+      "version": "3.5.4"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_files": [
+        {
+          "file": "h11-0.16.0.dist-info/licenses/LICENSE.txt",
+          "sha256": "37db5bb85926db28a427a25867f10b1232003aea1be69ccb851138adb8e6f361"
+        }
+      ],
+      "license_metadata": "MIT",
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "28f326098ac09fcba79b8f180f96087c841fe2456215cb7b872a9c7d5cd19d64",
+      "name": "h11",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:4e35b956cf45792e4caa5885e69fba00bdbc6ffafbfa020300e549b208ee5ff1",
+      "version": "0.16.0"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "certifi"
+        },
+        {
+          "name": "h11"
+        }
+      ],
+      "license_classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_expression": "BSD-3-Clause",
+      "license_files": [
+        {
+          "file": "httpcore-1.0.9.dist-info/licenses/LICENSE.md",
+          "sha256": "fdcb59154c74cbaba16a11242f7740bea9f23d6feb5547917d8c5f94a80392a5"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "fe2d4fda6199128978779e0cf27f3c045c531863fcdd987eacc74f3a18d41c21",
+      "name": "httpcore",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:6e34463af53fd2ab5d807f399a9b45ea31c3dfa2276f15a2c3f00afff6e176e8",
+      "version": "1.0.9"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "httptools-0.8.0.dist-info/licenses/LICENSE",
+          "sha256": "f4573e7cb7676745fb5b8d36fa548aa93e391cfb6872ddacd65130c45ea6a92d"
+        },
+        {
+          "file": "httptools-0.8.0.dist-info/licenses/vendor/http-parser/LICENSE-MIT",
+          "sha256": "79e6ba8b687cb54786207342b9b6fcee0ac10218453ed9009b84d949b2233cc0"
+        },
+        {
+          "file": "httptools-0.8.0.dist-info/licenses/vendor/llhttp/LICENSE",
+          "sha256": "628168d68bb5a8a17e0bbefb3bd74e326e1edc20583d76f52f457c82c921867d"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 7,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "7b5c0231580b589e7721b111f37324276f2a585bc2d27aedd67297e0c9b4bda8",
+      "name": "httptools",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:6b2a32f18d97e16e90827d7a819ffa8dbd8cc245fc4e1fa9d1095b54ef4bd999",
+      "version": "0.8.0"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "anyio"
+        },
+        {
+          "name": "certifi"
+        },
+        {
+          "name": "httpcore"
+        },
+        {
+          "name": "idna"
+        }
+      ],
+      "license_classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_expression": null,
+      "license_files": [
+        {
+          "file": "httpx-0.28.1.dist-info/licenses/LICENSE.md",
+          "sha256": "4ec59d544f12b5f539a3a716fd321ac58ccd8030b465221f2c880200cdf28d8d"
+        }
+      ],
+      "license_metadata": "BSD-3-Clause",
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "febb9b0f8f3e80d57c8199c304f35c4336e8581d1d18d7983c92766b82793b25",
+      "name": "httpx",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:75e98c5f16b0f35b567856f597f06ff2270a374470a5c2392242528e3e3e42fc",
+      "version": "0.28.1"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": "BSD-3-Clause",
+      "license_files": [
+        {
+          "file": "idna-3.18.dist-info/licenses/LICENSE.md",
+          "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "46dfe6e5ac462d0f680ecd9abcf66e829b6a2334824b4d9e3979b31135caf281",
+      "name": "idna",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:ffb385a7e039654cef1ab9ef32c6fafe283c0c0467bba1d9029738ce4a14a848",
+      "version": "3.18"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "iniconfig-2.3.0.dist-info/licenses/LICENSE",
+          "sha256": "3409fa91f7ace557894632676656e32264fe5ef7581535725dc9a23774551bd4"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "40d773f84e4e112f495bbf4f1be9cbd2d456c0aeb6ef5311f75d1bf322f2165b",
+      "name": "iniconfig",
+      "optional_dependencies": {},
+      "scope": [
+        "development"
+      ],
+      "sdist_sha256": "sha256:c76315c77db068650d49c5b56314774a7804df16fee4402c1f19d6d15d8c4730",
+      "version": "2.3.0"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "markupsafe"
+        }
+      ],
+      "license_classifiers": [],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "mako-1.4.3.dist-info/licenses/LICENSE",
+          "sha256": "8c1d171bc5d341ad9cd33d5e2c39b96a82c7bd49b3ae89a470c37e5822232054"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "39ea65f21e706265428ea6f2925520f419a10f0113a59318192ed38175d8838b",
+      "name": "mako",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:cd6537fe88d5fec315c55c2f8529bc4ce7a9a352ad7db3eeaa6a66e2dd4ec37a",
+      "version": "1.4.3"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": "BSD-3-Clause",
+      "license_files": [
+        {
+          "file": "markupsafe-3.0.3.dist-info/licenses/LICENSE.txt",
+          "sha256": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 11,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "12b4cc61a7fa288cf7667ee3f213786d9619db57fb33ff6f934afbcb5c12ec81",
+      "name": "markupsafe",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:722695808f4b6457b320fdc131280796bdceb04ab50fe1795cd540799ebe1698",
+      "version": "3.0.3"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "mypy-extensions"
+        },
+        {
+          "name": "typing-extensions"
+        }
+      ],
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_files": [
+        {
+          "file": "mypy-1.14.1.dist-info/LICENSE",
+          "sha256": "de341f6e031d021aab9eb27bdf713cc6fb844dee832ef3bcd4688bff5517220b"
+        }
+      ],
+      "license_metadata": "MIT",
+      "locked_wheel_count": 7,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "2bb1572b302245d7565bb2bfd28090cc13559fec40b756e0ac5567be3bbf301a",
+      "name": "mypy",
+      "optional_dependencies": {},
+      "scope": [
+        "development"
+      ],
+      "sdist_sha256": "sha256:7ec88144fe9b510e8475ec2f5f251992690fcf89ccb4500b214b4226abcd32d6",
+      "version": "1.14.1"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "mypy_extensions-1.1.0.dist-info/licenses/LICENSE",
+          "sha256": "a50450da1d53cd777b80ced77c58ff96abe0ccd879706bd142c3ec20e245f0b4"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "2c4a44936d885f30433181ca40bbf62457351f1f6b0871b11f8789564f87477f",
+      "name": "mypy-extensions",
+      "optional_dependencies": {},
+      "scope": [
+        "development"
+      ],
+      "sdist_sha256": "sha256:52e68efc3284861e772bbcd66823fde5ae21fd2fdb51c62a211403730b916558",
+      "version": "1.1.0"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "typing-extensions"
+        }
+      ],
+      "license_classifiers": [],
+      "license_expression": "Apache-2.0",
+      "license_files": [
+        {
+          "file": "opentelemetry_api-1.45.1.dist-info/licenses/LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "5bc71e90cb421be92a43bf5ad5b0f25dccfa2a24ddceaa2877779879962a4c9e",
+      "name": "opentelemetry-api",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:aa38ed19bcc084ba42782a73255b3582283eced7ad6dddbd6695189e69adfb75",
+      "version": "1.45.1"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": "Apache-2.0 OR BSD-2-Clause",
+      "license_files": [
+        {
+          "file": "packaging-26.2.dist-info/licenses/LICENSE",
+          "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48"
+        },
+        {
+          "file": "packaging-26.2.dist-info/licenses/LICENSE.APACHE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+        },
+        {
+          "file": "packaging-26.2.dist-info/licenses/LICENSE.BSD",
+          "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "4f9cbcd7933415a4793f7767c98a2b6a512c823fc81c87337815705f230ecabf",
+      "name": "packaging",
+      "optional_dependencies": {},
+      "scope": [
+        "development"
+      ],
+      "sdist_sha256": "sha256:ff452ff5a3e828ce110190feff1178bb1f2ea2281fa2075aadb987c2fb221661",
+      "version": "26.2"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_files": [
+        {
+          "file": "pluggy-1.6.0.dist-info/licenses/LICENSE",
+          "sha256": "d6b65e6c213a5d0b577911d34d6e5949b9f59d76c238c5071a2f3fc16cfb2606"
+        }
+      ],
+      "license_metadata": "MIT",
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "7438c35ee25a095eb7416f84b461c2d74425c5e734ad54c3912453c65244e01c",
+      "name": "pluggy",
+      "optional_dependencies": {},
+      "scope": [
+        "development"
+      ],
+      "sdist_sha256": "sha256:7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3",
+      "version": "1.6.0"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "annotated-types"
+        },
+        {
+          "name": "pydantic-core"
+        },
+        {
+          "name": "typing-extensions"
+        },
+        {
+          "name": "typing-inspection"
+        }
+      ],
+      "license_classifiers": [],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "pydantic-2.13.4.dist-info/licenses/LICENSE",
+          "sha256": "a9e186f3ca16b5eef84318e7a701721351a00cb7b8ae3a4394b67b49e3529ef3"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "d1e56c3412492512fb6b59a9dfc25ab7af2a8204585cd7bca000513023133394",
+      "name": "pydantic",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:c40756b57adaa8b1efeeced5c196f3f3b7c435f90e84ea7f443901bec8099ef6",
+      "version": "2.13.4"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "typing-extensions"
+        }
+      ],
+      "license_classifiers": [],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "pydantic_core-2.46.4.dist-info/licenses/LICENSE",
+          "sha256": "2afdd30d54b4d62b6f488a6bcc1546e84ec5061f13f4209c03d012348783795a"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 15,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "135fa8b2f89473e9191c7078c2164e3ec6c8927a61c2379c2fddcc07f11f3bae",
+      "name": "pydantic-core",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:62f875393d7f270851f20523dd2e29f082bcc82292d66db2b64ea71f64b6e1c1",
+      "version": "2.46.4"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "pydantic"
+        },
+        {
+          "name": "python-dotenv"
+        }
+      ],
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "pydantic_settings-2.7.1.dist-info/licenses/LICENSE",
+          "sha256": "eb355a753e020346d33d83bf9769135b89fc610568ac531a01c295bcee7fd998"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "8dcd651a43d0ab98e225616b57dac63cb3de02e5e64bd1864705c55bf23ec0bb",
+      "name": "pydantic-settings",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:10c9caad35e64bfb3c2fbf70a078c0e25cc92499782e5200747f942a065dec93",
+      "version": "2.7.1"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": "BSD-2-Clause",
+      "license_files": [
+        {
+          "file": "pygments-2.21.0.dist-info/licenses/AUTHORS",
+          "sha256": "71a83872ad82f57be692cf827e048e2cd51d45169cfa1ea3f28706d97a872c0f"
+        },
+        {
+          "file": "pygments-2.21.0.dist-info/licenses/LICENSE",
+          "sha256": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "1dde075570136774c706bf0009183a793fe0ee262e4a5590cc6eff8453eedd43",
+      "name": "pygments",
+      "optional_dependencies": {},
+      "scope": [
+        "development"
+      ],
+      "sdist_sha256": "sha256:610ca751c9bc2492b38eb9a38a7fbc93edbbb2d7182edaf34e66ae493dee5c8c",
+      "version": "2.21.0"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "pyjwt-2.15.1.dist-info/licenses/AUTHORS.rst",
+          "sha256": "925ce43461029eedbf558ec0b7cf7fc4b045def5120ebb97937c70814071cf07"
+        },
+        {
+          "file": "pyjwt-2.15.1.dist-info/licenses/LICENSE",
+          "sha256": "797a7a20231d4c433e9f1911db1731d06b5828b98f499819a034f7c0f56f5ce5"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "1ea0c9f139b8c928276b3628af165955f6f764491448a6ad8f103cdcbb382da3",
+      "name": "pyjwt",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:4f259e80cdfb6b3fc18a7de51fd1ef9ec79652f25019bae68975ca2468a34df8",
+      "version": "2.15.1"
+    },
+    {
+      "dependencies": [
+        {
+          "marker": "sys_platform == 'win32'",
+          "name": "colorama"
+        },
+        {
+          "name": "iniconfig"
+        },
+        {
+          "name": "packaging"
+        },
+        {
+          "name": "pluggy"
+        },
+        {
+          "name": "pygments"
+        }
+      ],
+      "license_classifiers": [],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "pytest-9.0.3.dist-info/licenses/LICENSE",
+          "sha256": "ca836a5f9ecca3b2f350230faa20a48fb8b145653b5568d784862df864706b9b"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "c3966f28791686477bae35e518736d4cbea5b626d3a79011215854e2bc670207",
+      "name": "pytest",
+      "optional_dependencies": {},
+      "scope": [
+        "development"
+      ],
+      "sdist_sha256": "sha256:b86ada508af81d19edeb213c681b1d48246c1a91d304c6c81a427674c17eb91c",
+      "version": "9.0.3"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": null,
+      "license_files": [
+        {
+          "file": "python_dotenv-1.2.2.dist-info/licenses/LICENSE",
+          "sha256": "80619b7049f08c81683ad0e01f08f257a840652dd71ee83146d36658c7d2c2b9"
+        }
+      ],
+      "license_metadata": "BSD-3-Clause",
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "59430a9dee8f8118dbf693e41c4a3e5150626d19901f4727503da9499f5a64a1",
+      "name": "python-dotenv",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:2c371a91fbd7ba082c2c1dc1f8bf89ca22564a087c2c287cd9b662adde799cf3",
+      "version": "1.2.2"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_files": [
+        {
+          "file": "pyyaml-6.0.3.dist-info/licenses/LICENSE",
+          "sha256": "8d3928f9dc4490fd635707cb88eb26bd764102a7282954307d3e5167a577e8a4"
+        }
+      ],
+      "license_metadata": "MIT",
+      "locked_wheel_count": 10,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "03c3b415ed38d09faedc49360e930769b40c58f68585e6de00e2e4916a858d34",
+      "name": "pyyaml",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f",
+      "version": "6.0.3"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "pyjwt"
+        }
+      ],
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_files": [
+        {
+          "file": "redis-5.3.1.dist-info/LICENSE",
+          "sha256": "a57b250a5bf03d7afe55b74063313f2adb7b00d546c0ab149a89398333fe3cc8"
+        }
+      ],
+      "license_metadata": "MIT",
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "71cac2ab27f057e87818c8428343d40e595dc302f5d123b07165f41b52da271a",
+      "name": "redis",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:ca49577a531ea64039b5a36db3d6cd1a0c7a60c34124d46924a45b956e8cf14c",
+      "version": "5.3.1"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_files": [
+        {
+          "file": "ruff-0.9.10.dist-info/licenses/LICENSE",
+          "sha256": "3209c0b7fb7257c05b16433728c1e974bac40000fef171b8e9e89f095623c954"
+        }
+      ],
+      "license_metadata": "MIT",
+      "locked_wheel_count": 17,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "c99c0c489f1a0292868971861921e4c7521bd5e616a84feb654535c2dc12fe32",
+      "name": "ruff",
+      "optional_dependencies": {},
+      "scope": [
+        "development"
+      ],
+      "sdist_sha256": "sha256:9bacb735d7bada9cfb0f2c227d3658fc443d90a727b47f206fb33f52f3c0eac7",
+      "version": "0.9.10"
+    },
+    {
+      "dependencies": [
+        {
+          "marker": "platform_machine == 'AMD64' or platform_machine == 'WIN32' or platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'ppc64le' or platform_machine == 'win32' or platform_machine == 'x86_64'",
+          "name": "greenlet"
+        },
+        {
+          "name": "typing-extensions"
+        }
+      ],
+      "license_classifiers": [],
+      "license_expression": null,
+      "license_files": [
+        {
+          "file": "sqlalchemy-2.0.51.dist-info/licenses/LICENSE",
+          "sha256": "e862bb5b904fb5513c3e14288d7a25a12eb0ecc7847a0a965d310e9a955e7cb9"
+        }
+      ],
+      "license_metadata": "MIT",
+      "locked_wheel_count": 8,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "6fea45e57dc5b5b1c4ad7bed68a2cca0895b66d3be6a8f7c451d3ad09e937776",
+      "name": "sqlalchemy",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:804dccd8a4a6242c4e30ad961e540e18a588f6527202f2d6791b01845d59fdc9",
+      "version": "2.0.51"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "anyio"
+        },
+        {
+          "name": "typing-extensions"
+        }
+      ],
+      "license_classifiers": [],
+      "license_expression": "BSD-3-Clause",
+      "license_files": [
+        {
+          "file": "starlette-1.3.1.dist-info/licenses/LICENSE.md",
+          "sha256": "dcb95677a02240243187e964f941847d19b17821cf99e5afae684fab328c19bf"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "d83ccd9665eb05d1f9393c75e209cb353990731a6215a609a0f1c5c0a6286c9a",
+      "name": "starlette",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:05d0213193f2fbaae60e2ecb593b4add4262ad4e46536b54abe36f11a71724e0",
+      "version": "1.3.1"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": "PSF-2.0",
+      "license_files": [
+        {
+          "file": "typing_extensions-4.16.0.dist-info/licenses/LICENSE",
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "b05084ca1d50879865178d9fff9fabeab61bdfb1f361bfbde95421ffc8f9be46",
+      "name": "typing-extensions",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime",
+        "development"
+      ],
+      "sdist_sha256": "sha256:dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5",
+      "version": "4.16.0"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "typing-extensions"
+        }
+      ],
+      "license_classifiers": [],
+      "license_expression": "MIT",
+      "license_files": [
+        {
+          "file": "typing_inspection-0.4.2.dist-info/licenses/LICENSE",
+          "sha256": "804b59b25f2c31bd278f9202a19ae49a3945aa2664387e2d0a128c7cacc61ec3"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "61096cd0bfe3c7040b6f98c22b02d190fe01936d0ff7616c5134fed02891953a",
+      "name": "typing-inspection",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:ba561c48a67c5958007083d386c3295464928b01faa735ab8547c5692e87f464",
+      "version": "0.4.2"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "click"
+        },
+        {
+          "name": "h11"
+        }
+      ],
+      "license_classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_expression": "BSD-3-Clause",
+      "license_files": [
+        {
+          "file": "uvicorn-0.34.3.dist-info/licenses/LICENSE.md",
+          "sha256": "efe1acf3e62fb99c288b0ec73e5a773b7268ef4320fe757ea994214e4b63c371"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 1,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "442d4eaebbb15807c2c562d73fec5452893c187f4f7b3e22218145ba6e5d0670",
+      "name": "uvicorn",
+      "optional_dependencies": {
+        "standard": [
+          {
+            "marker": "sys_platform == 'win32'",
+            "name": "colorama"
+          },
+          {
+            "name": "httptools"
+          },
+          {
+            "name": "python-dotenv"
+          },
+          {
+            "name": "pyyaml"
+          },
+          {
+            "marker": "platform_python_implementation != 'PyPy' and sys_platform != 'cygwin' and sys_platform != 'win32'",
+            "name": "uvloop"
+          },
+          {
+            "name": "watchfiles"
+          },
+          {
+            "name": "websockets"
+          }
+        ]
+      },
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:35919a9a979d7a59334b6b10e05d77c1d0d574c50e0fc98b8b1a0f165708b55a",
+      "version": "0.34.3"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [
+        "License :: OSI Approved :: Apache Software License",
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_files": [
+        {
+          "file": "uvloop-0.22.1.dist-info/licenses/LICENSE-APACHE",
+          "sha256": "377025287798f9dcd819e1f826fa5fc5e2f382528691ab0528c5cf8c8c282c27"
+        },
+        {
+          "file": "uvloop-0.22.1.dist-info/licenses/LICENSE-MIT",
+          "sha256": "6dd4c399f26de043d77a2ad7e31db4cb5bf08ea8368b0a42d6e158635cc8ab62"
+        }
+      ],
+      "license_metadata": "MIT License",
+      "locked_wheel_count": 6,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "7106328da9670776c358802971b7dc41c0b86ed3673bf9cc4c0d5e11ff2f3583",
+      "name": "uvloop",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:6c84bae345b9147082b17371e3dd5d42775bddce91f885499017f4607fdaf39f",
+      "version": "0.22.1"
+    },
+    {
+      "dependencies": [
+        {
+          "name": "anyio"
+        }
+      ],
+      "license_classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_files": [
+        {
+          "file": "watchfiles-1.2.0.dist-info/licenses/LICENSE",
+          "sha256": "4fd78355b67ce2677ede9fb6f63a250f377bb7e22088136a5f4699adb4bc069f"
+        }
+      ],
+      "license_metadata": "MIT",
+      "locked_wheel_count": 14,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "2c92c0bfebdf6743603f6e7c4da95a53ce4d575f00cede3aa2032a8d5ce3da17",
+      "name": "watchfiles",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:c995fba777f1ea992f090f9236e9284cf7a5d1a0130dd5a3d82c598cacd76838",
+      "version": "1.2.0"
+    },
+    {
+      "dependencies": [],
+      "license_classifiers": [],
+      "license_expression": "BSD-3-Clause",
+      "license_files": [
+        {
+          "file": "websockets-16.1.1.dist-info/licenses/LICENSE",
+          "sha256": "3d6a0c050d8bec52fabad502e45fb25bd02bcadbd70dea34d447b6a0ff4e6da8"
+        }
+      ],
+      "license_metadata": null,
+      "locked_wheel_count": 18,
+      "metadata_origin": "exact-version installed distribution METADATA",
+      "metadata_sha256": "6bc4c4955dba270fb5116b5ec48bf5e5485f71bc70ba11120482ab476c03ae27",
+      "name": "websockets",
+      "optional_dependencies": {},
+      "scope": [
+        "runtime"
+      ],
+      "sdist_sha256": "sha256:db234eda965dcce15df96bb9709f587cd87d4d52aaf0e80e2f34ec04c7670c57",
+      "version": "16.1.1"
+    }
+  ],
+  "date": "2026-11-01",
+  "project_license": "MIT; Copyright (c) 2026 Hoang Nguyen",
+  "python": "3.12",
+  "schema": 1,
+  "scope": "Every third-party package in uv.lock, including runtime/development/transitive and OS-conditional packages. Metadata is evidence, not legal certification or complete bundled-code license analysis.",
+  "uv_lock_sha256": "207824e1ff4166fda7f71e9e2dc21a33a9bdc649db6eafb4673ca983464d8794"
+}

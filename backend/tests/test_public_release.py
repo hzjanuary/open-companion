@@ -1,6 +1,7 @@
 """Public release contract and isolated VCS-free CLI mutation rejection."""
 
 import importlib.util
+import json
 import shutil
 import subprocess
 import sys
@@ -72,6 +73,12 @@ def test_actual_public_contract() -> None:
     release.validate(ROOT)
 
 
+def test_official_mit_identity() -> None:
+    assert (ROOT / "LICENSE").read_text().splitlines()[2] == (
+        "Copyright (c) 2026 Hoang Nguyen"
+    )
+
+
 def test_vcs_free_cli_without_git_uv_or_credentials(candidate: Path) -> None:
     assert not (candidate / ".git").exists()
     assert not (candidate / ".env").exists()
@@ -103,6 +110,11 @@ def test_cli_accepts_relative_source_root(candidate: Path) -> None:
     [
         "license_missing",
         "license_modified",
+        "legacy_license_identity",
+        "future_repository",
+        "stale_lock_inventory",
+        "missing_transitive_license",
+        "missing_sbom_component",
         "readme_apache",
         "contribution_link",
         "script_mode",
@@ -129,6 +141,27 @@ def test_isolated_mutations_fail_process(candidate: Path, mutation: str) -> None
     elif mutation == "license_modified":
         with (candidate / "LICENSE").open("a") as file:
             file.write("Additional restriction: no commercial use.\n")
+    elif mutation == "legacy_license_identity":
+        path = candidate / "LICENSE"
+        path.write_text(path.read_text().replace("2026 Hoang Nguyen", "2026 hzjanuary"))
+    elif mutation == "future_repository":
+        with (candidate / "README.md").open("a") as file:
+            file.write("\nThe planned public repository is not published.\n")
+    elif mutation == "stale_lock_inventory":
+        with (candidate / "uv.lock").open("a") as file:
+            file.write("\n# changed after inventory\n")
+    elif mutation == "missing_transitive_license":
+        path = candidate / "docs/validation/OSS-001-python-licenses.json"
+        data = json.loads(path.read_text())
+        data["components"] = [
+            row for row in data["components"] if row["name"] != "certifi"
+        ]
+        path.write_text(json.dumps(data))
+    elif mutation == "missing_sbom_component":
+        path = candidate / "docs/validation/OSS-001-python-sbom.cdx.json"
+        data = json.loads(path.read_text())
+        data["components"].pop()
+        path.write_text(json.dumps(data))
     elif mutation == "readme_apache":
         path = candidate / "README.md"
         path.write_text(

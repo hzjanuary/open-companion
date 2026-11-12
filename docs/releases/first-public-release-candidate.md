@@ -1,9 +1,10 @@
-# January v0.1.0 — draft release notes
+# January v0.1.0 — Initial Self-hosted Telegram AI Companion Source Preview
 
 **NOT YET PUBLISHED · Independent audit pending**
 
 The owner approved v0.1.0. Publication date is not assigned. No tag,
-GitHub Release, official prebuilt image or public availability is implied.
+GitHub Release or official prebuilt image is implied. The source repository is
+already public; this proposed release remains unpublished.
 
 ## Highlights
 
@@ -65,18 +66,43 @@ best-effort. Synthetic Quality does not prove live bot/model availability.
 
 Source is [MIT licensed](../../LICENSE); retain [third-party notices](../../NOTICE).
 Report vulnerabilities through [SECURITY.md](../../SECURITY.md).
-Independent audit, a future new public root commit with verified GitHub noreply
-metadata, owner-reviewed push, exact-SHA remote Quality, refreshed public-history
-review,
-settings/visibility review, annotated tag and Release publication remain
-separate steps in the [owner procedure](../maintainers/first-public-publication.md).
+Independent audit of the exact approved private package/source, refreshed
+history/privacy review, exact-SHA GitHub Quality and owner authorization remain
+required under the [current procedure](../maintainers/post-publication-source-release.md).
+The private audit package location is pending; the public SPEC-048 handoff is
+historical context, not independent approval.
+
+## Distribution and source identity
+
+The public repository is https://github.com/hzjanuary/open-companion. The
+original root is `069642473d6a39824b7a5ccf9c844cb8e6c4f354`; OSS-001 began at
+main `612f89c6724261873d38cfa9a9639eb5836cb41a`. Record final source SHA,
+independent audit binding, exact-SHA Quality runs and source checksums in the
+[acceptance ledger](../validation/OSS-001-acceptance.md) when observed.
+
+Proposed distribution: GitHub **Pre-release**, GitHub-generated source ZIP and
+tar.gz only. No official binary, package, prebuilt Docker image, model weights
+or deployment. Source approval and local-image security approval are separate
+owner decisions. Review the image findings before building for operation;
+a source-only release never certifies the OS/container dependencies.
+
+## Image security notice — owner decision pending
+
+The local corrected-source Docker build was scanned separately using pinned
+Trivy 0.76.1. It reports 45 HIGH OS package/advisory instances with no fixed
+version in the observed DB, plus lower-severity OS and base-image pip findings.
+No CRITICAL was reported. See the
+[container inventory and complete finding metadata](../validation/OSS-001-container-inventory.json).
+No official prebuilt image is published or approved. A source-only release
+requires an explicit owner risk decision; source CI does not approve an image
+or guarantee the security of later mutable-tag builds.
+
+This preparation also corrects raw retention for stalled jobs and prevents
+late edits from restoring redacted messages. It preserves all 26 migrations
+and the separate explicit-memory lifecycle. Validation/audit status is tracked
+in the acceptance ledger; no live bot/model result is implied.
 
 ## Source identity and upgrade
-
-The public repository is planned at https://github.com/hzjanuary/open-companion.
-This VCS-free snapshot has a private audit manifest; a future public source SHA,
-remote Quality run, tag target and publication date must be recorded only after
-they exist. No old private source history is part of this distribution.
 
 This first source release introduces no migration or configuration default change.
 Existing operators must back up PostgreSQL and erasure records, review config and

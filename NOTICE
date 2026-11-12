@@ -7,6 +7,8 @@ under .harness-core/base, Harness sections in AGENTS.md, and Harness workflow,
 index and template material identified by .harness-core/manifest.json.
 These upstream portions retain their original copyright and MIT permission.
 The project LICENSE does not replace this notice or dependency licenses.
+This is optional development/maintainer tooling, not a January runtime dependency.
+The application builds and tests without fetching the upstream repository.
 
 Upstream LICENSE verified at e765792b635b4d5e3e5fc0578f82f9ca5dea2681:
 https://github.com/hoangnb24/repository-harness/blob/e765792b635b4d5e3e5fc0578f82f9ca5dea2681/LICENSE

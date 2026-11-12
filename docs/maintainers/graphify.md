@@ -209,7 +209,8 @@ on unsupported ignore negation instead of silently reducing source coverage.
 
 ## License boundary
 
-January's [MIT LICENSE](../../LICENSE) and [NOTICE](../../NOTICE) are unchanged.
+January's [MIT LICENSE](../../LICENSE) uses the owner-confirmed Hoang Nguyen
+identity. [NOTICE](../../NOTICE) preserves the installed Harness grant.
 Graphify is independently installed external Apache-2.0 tooling. Its
 [NOTICE](https://github.com/Graphify-Labs/graphify/blob/0b60d47e6cd9338c51143f39f35b6c45c8453385/NOTICE)
 also identifies legacy MIT portions; the package includes LICENSE, LICENSE-MIT

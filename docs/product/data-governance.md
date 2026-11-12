@@ -72,7 +72,9 @@ with `/memory reset_group confirm`.
 automatically for bounded categories and operator-configurable for the rest.
 
 **Who owns encryption:** see the encryption-ownership matrix. In transit, the
-operating owner provides HTTPS and the product requires it; secrets are
+operating owner provides HTTPS; public webhook and production hosted-provider
+configuration enforce HTTPS, while local/internal connections need separate
+owner protection. Secrets are
 injected at the process boundary and never stored in the database, logs, or
 audit. Application-level field encryption is not currently provided.
 
@@ -205,6 +207,34 @@ to what January stores updates the inventory in the same change.
   no prompt, response, memory, vector, credential, subject, or raw platform
   identity. Retention requires operating-owner approval and is not silently
   inherited from product-content erasure.
+
+## Retention operation and external boundaries
+
+The maximum 30-day raw-content policy applies to raw messages, replies and
+related payloads, not every category of personal data. Explicit memories,
+creator-private context, preferences and content-free governance/provider
+records have the separate lifecycles below. Telegram remains an external
+platform. Enabled hosted LLM, transcription and TTS providers receive the
+content required by those capabilities; local Ollama does not make Telegram
+local or retract copies held by external platforms/providers.
+
+Automatic redaction requires the retention worker to remain enabled and healthy.
+The supported self-host topology enables it; bare development settings default
+the worker off. Redaction runs in bounded batches, so operators must monitor
+worker failures, downtime and backlog rather than assume a wall-clock deletion
+SLA from a configured number alone. Expired content is excluded from governed
+retrieval; backups remain subject to the separate reconciliation/purge policy.
+Do not disable privacy workers to simplify installation.
+
+Expiry also clears raw copies in pending/leased work. Command arguments use the
+earlier of their creation time and original source-message time; completion does
+not restart the retention clock. Expired unfinished commands/delivery actions
+are fenced before further work. If delivery I/O already began, the outcome stays
+unknown and is quarantined for explicit recovery, never automatically resent.
+Missing or future platform timestamps do not extend the local storage deadline.
+An edit cannot restore message text/metadata after its redaction tombstone.
+These controls do not delete separately governed explicit memories or personal
+context merely because the source message expires.
 
 ## Written retention schedule (FR-08)
 

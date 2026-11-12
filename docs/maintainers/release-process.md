@@ -23,9 +23,10 @@ operator HTTP APIs remain current implementation interfaces.
 FIRST PUBLIC VERSION: v0.1.0 — OWNER APPROVED; NOT YET PUBLISHED.
 
 Package metadata is `0.1.0`. This creates no tag, publication date or release
-history. The planned public repository is https://github.com/hzjanuary/open-companion.
-An uncommitted VCS-free snapshot is identified by its reviewed file manifest
-and SHA-256 content hashes until a new public root commit is authorized.
+history. The existing public repository is https://github.com/hzjanuary/open-companion.
+Preserve its public root and subsequent history; identify uncommitted work by
+its reviewed file manifest, modes and SHA-256 content hashes. See the
+[post-publication procedure](post-publication-source-release.md).
 
 | State | Evidence required |
 | --- | --- |
@@ -35,9 +36,9 @@ and SHA-256 content hashes until a new public root commit is authorized.
 | TAGGED RELEASE | Owner-approved version tag resolves to that verified SHA. |
 | PUBLISHED GITHUB RELEASE | Owner publishes release notes and artifacts for that exact tag/SHA. |
 
-Local staging reaches only SNAPSHOT STAGED — INDEPENDENT AUDIT PENDING after
-its required checks pass. Private baseline CI does not verify filtered public
-source. Future public CI must cover the exact new public SHA.
+The historical SPEC-048 snapshot is not independent audit approval. A prior
+baseline CI run does not verify new source changes. Current source approval
+requires independent review and completed successful Quality on the exact SHA.
 
 ## Compatibility and support
 
@@ -68,8 +69,10 @@ enabled capabilities; local Ollama does not remove Telegram's data boundary.
    on fresh isolated synthetic services. Run supplemental reliability,
    backup/restore, governance and production-readiness gates. Never use live
    credentials or personal databases. Preserve failures; no weakened selectors.
-3. Independently audit the exact candidate. Only the owner then creates a NEW root commit and pushes, following the
-   [snapshot publication procedure](first-public-publication.md). Recheck a clean worktree, source SHA and the **same SHA's** remote
+3. Independently audit the exact candidate and owner-approved private package.
+   Preserve existing history and use a normal feature branch and Draft PR under
+   the [post-publication procedure](post-publication-source-release.md).
+   Recheck a clean worktree, source SHA and the **same SHA's** remote
    Quality: completed/success, correct branch/event. Do not use an older green
    run as approval of new files. Repeat affected proof after changes.
 4. Fill the [release notes template](release-notes-template.md), documenting
@@ -80,8 +83,8 @@ enabled capabilities; local Ollama does not remove Telegram's data boundary.
    files. Review matches without printing values. If history was not scanned,
    state that limitation; rotation, not deleting a line, invalidates leaked
    credentials. History rewriting is a separate owner decision.
-6. Before Git initialization, materialize the exact manifest without Git.
-   After an authorized public commit exists, check its source archive
+6. Materialize the exact source manifest without importing private files.
+   Check the existing public candidate commit's source archive
    and shallow checkout. Check required
    files, executable modes and validation without a developer `.venv`, ignored
    `.env`, `.tools`, `.git` history or generated local evidence. VCS-free users
